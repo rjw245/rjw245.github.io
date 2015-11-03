@@ -48,6 +48,11 @@ a.tile-link:hover {
 	color: rgb(50,50,50);
 }
 
+img:hover {
+    opacity:0.5;
+}
+
+
 a.tile-link:active {
 	color: rgb(100,100,100);
 }
@@ -70,9 +75,15 @@ a.tile-link:visited {
     }
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+@media (min-width: 481px) and (max-width: 650px) {
     .header-container .panel h2 span {
     font-size:16px;
+    }
+}
+
+@media (min-width: 651px) and (max-width: 767px) {
+    .header-container .panel h2 span {
+    font-size:20px;
     }
 }
 
