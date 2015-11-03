@@ -19,21 +19,36 @@
 .header-container .panel {
     display: table;
     width: 100%;
-    height: 100%;
+    height:100%;
 
     background-color: rgba(255,255,255,0);
 }
 .header-container .panel h2 {
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: bottom;
     text-align: center;
 }
 .header-container .panel h2 span {
     display: inline-block;
     padding: 5px;
-    border-radius: 5px;
-    margin: 0 10px;
-    background-color: rgba(255,255,255,0.6);
+    width: 100%;
+    background-color: rgba(255,255,255,0.7);
+}
+
+a.tile-link:link {
+	color: rgb(0,0,0);
+}
+
+a.tile-link:hover {
+	color: rgb(50,50,50);
+}
+
+a.tile-link:active {
+	color: rgb(100,100,100);
+}
+
+a.tile-link:visited {
+	color: rgb(0,0,0);
 }
 
 @media (max-width: 480px) {
