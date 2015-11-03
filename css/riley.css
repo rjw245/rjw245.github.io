@@ -112,3 +112,20 @@ a.tile-link:visited {
   font-size:24px;
   }
 }
+
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+h1#title {
+    font-size: 60px;
+}
+
+p#tagline {
+    font-size: 18px;
+}
+
+.row.text-center > div {
+    display: inline-block;
+    float: none;
+}
