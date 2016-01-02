@@ -1,19 +1,31 @@
 .tile {
-    border: 3px solid #555;
+    border: 3px solid #640698;
     border-radius: 5px;
     position: relative;
     margin: 5px;
     float: left;
     padding: 0;
 }
+.col-sm-3 {
+    padding: 0;
+}
+.tile.hidden {
+    border: 0;
+}.navbar-default {
+    border-top: 4px solid #AA53DA;
+    background-image: linear-gradient(to bottom,#fff 0,#C27FE7 500%)!important;
+}
 .tile img {
-    opacity: 0.6;
-    /* Blur when not hovering
-    filter: blur(5px);
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
+    opacity: 0.8;
+    z-index: 0;
+
+    /*Blur when not hovering
+    -webkit-transition : -webkit-filter 50ms linear;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
 }
 .tile:hover img {
     filter: blur(0px);
@@ -30,16 +42,29 @@
     width: 100%;
     height: 100%;
     opacity:0.6;
-    background:rgba(255,153,51,1); /* Orange */
-    mix-blend-mode: multiply;
+    z-index: 1;
+    mix-blend-mode: overlay;
 }
+
+/*Overlay colors*/
+.highlight-overlay.orange {
+    background:rgba(255,153,51,1); /* Orange */
+}
+.highlight-overlay.orange {
+    background:rgba(255,153,51,1); /* Orange */
+}
+.highlight-overlay.orange {
+    background:rgba(255,153,51,1); /* Orange */
+}
+.highlight-overlay.orange {
+    background:rgba(255,153,51,1); /* Orange */
+}
+
 .tile:hover .highlight-overlay {
-    background:rgba(0,153,255,.7); /* Blue */
-    opacity:0.6;
+    opacity:0.7;
 }
 .tile:active .highlight-overlay {
-    opacity:1;
-    background:rgba(0,153,255,.7); /* Blue */
+    opacity:0.8;
 }
 div.image-container {   
     background-color: rgb(255,255,255);
@@ -56,6 +81,7 @@ div.image-container {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 2;
 }
 .header-container .panel {
     display: table;
@@ -70,7 +96,7 @@ div.image-container {
 }
 .header-container .panel h2 span {
     display: inline-block;
-    padding: 5px;
+    padding: 5px 2px;
     width: 98%;
     margin-bottom: 1%;
     background-color: rgba(255,255,255,0.65);
@@ -94,45 +120,47 @@ a.tile-link:visited {
 
 @media (max-width: 440px) {
     .header-container .panel h2 span {
-    font-size:8px;
+        font-size:8px;
     }
 }
 
 @media (min-width: 441px) and (max-width: 480px) {
     .header-container .panel h2 span {
-    font-size:9px;
+        font-size:9px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 650px) {
     .header-container .panel h2 span {
-    font-size:9px;
+        font-size:9px;
     }
 }
 
 @media (min-width: 651px) and (max-width: 767px) {
     .header-container .panel h2 span {
-    font-size:12px;
+        font-size:12px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .header-container .panel h2 span {
-    font-size:14px;
+        font-size:14px;
     }
 }
 
 @media (min-width: 1200px) {
-  .header-container .panel h2 span {
-  font-size:18px;
-  }
+    .header-container .panel h2 span {
+        font-size:20px;
+    }
 }
 
 body {
     font-family: 'Roboto Slab', serif;
     height: 100%;
+    background-color: #FFFFFF
 }
 
+/*
 body:after {
     content : "";
     display: block;
@@ -142,9 +170,10 @@ body:after {
     background-image: url('../img/stripe.gif'); 
     width: 100%;
     height: 100%;
-    opacity : 0.3;
+    opacity : 0.2;
     z-index: -1;
 }
+*/
 
 h1#title {
     font-size: 60px;
@@ -157,4 +186,21 @@ p#tagline {
 .row.text-center > div {
     display: inline-block;
     float: none;
+}
+
+/*Prevent navbar collapse*/
+.navbar-collapse.collapse {
+display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+margin-right: -15px !important;
+}
+
+.navbar-right {
+float: right!important;
 }
