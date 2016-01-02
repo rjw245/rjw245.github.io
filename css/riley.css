@@ -6,19 +6,43 @@
     float: left;
     padding: 0;
 }
+.tile img {
+    opacity: 0.6;
+    /* Blur when not hovering
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+}
+.tile:hover img {
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    */
+}
 .highlight-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity:0;
+    opacity:0.6;
+    background:rgba(255,153,51,1); /* Orange */
+    mix-blend-mode: multiply;
 }
 .tile:hover .highlight-overlay {
+    background:rgba(0,153,255,.7); /* Blue */
     opacity:0.6;
 }
 .tile:active .highlight-overlay {
     opacity:1;
+    background:rgba(0,153,255,.7); /* Blue */
+}
+div.image-container {   
+    background-color: rgb(255,255,255);
 }
 .image-container img {
     display: block;
@@ -58,15 +82,6 @@ a.tile-link:link {
 	color: rgb(0,0,0);
 }
 
-a.tile-link:hover {
-	color: rgb(50,50,50);
-}
-
-
-a.tile-link:active {
-	color: rgb(100,100,100);
-}
-
 a.tile-link:visited {
 	color: rgb(0,0,0);
 }
@@ -85,36 +100,50 @@ a.tile-link:visited {
 
 @media (min-width: 441px) and (max-width: 480px) {
     .header-container .panel h2 span {
-    font-size:12px;
+    font-size:11px;
     }
 }
 
 @media (min-width: 481px) and (max-width: 650px) {
     .header-container .panel h2 span {
-    font-size:16px;
+    font-size:15px;
     }
 }
 
 @media (min-width: 651px) and (max-width: 767px) {
     .header-container .panel h2 span {
-    font-size:20px;
+    font-size:17px;
     }
 }
 
 @media (min-width: 768px) and (max-width: 1199px) {
     .header-container .panel h2 span {
-    font-size:22px;
+    font-size:18px;
     }
 }
 
 @media (min-width: 1200px) {
   .header-container .panel h2 span {
-  font-size:24px;
+  font-size:19px;
   }
 }
 
 body {
     font-family: 'Roboto Slab', serif;
+    height: 100%;
+}
+
+body:after {
+    content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url('../img/stripe.gif'); 
+    width: 100%;
+    height: 100%;
+    opacity : 0.4;
+    z-index: -1;
 }
 
 h1#title {
