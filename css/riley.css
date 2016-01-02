@@ -204,3 +204,7 @@ margin-right: -15px !important;
 .navbar-right {
 float: right!important;
 }
+
+.navbar li.active {
+    font-weight: bold;
+}
