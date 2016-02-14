@@ -1,0 +1,85 @@
+<head>
+<title>Live Rider</title>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<style>
+body {
+	text-align: center;
+	font-family: Courier;
+}
+
+body::after {
+  content: "";
+  background: url("http://cdn.collider.com/wp-content/uploads/tron-light-cycle-replica.jpg");
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: center 5px; 
+}
+
+#speed {
+	font-size:110px;
+}
+
+h1 {
+	font-size: 100px;
+}
+
+#title {
+	font-weight: bold;
+}
+
+</style>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$( document ).ready( function() {
+		setInterval(getAngleData,500);
+		setInterval(getSpeedData,500);
+	} );
+	
+	function getAngleData() {
+		$.get( "https://api.particle.io/v1/devices/370033001347343432313031/speed2?access_token=cfe7909546aa4ea6228edb78d98aa4b3b461f38a").then(function( data ) {
+			writeAngleData( data )
+		}, function (data) {
+			getAngleData();
+		});
+	}
+	
+	function writeAngleData( data ) {
+		$('#speed').text(Number(data["result"]).toPrecision(4)+" m/s");
+		var speed = Number(data["result"]);
+		if(speed<1.0) {
+			$('#gear').text("1");
+		} else {
+			$('#gear').text("2");
+		}
+	}
+	
+	function writeSpeedData( data ) {
+		console.log(data["result"]);
+		$('#angle').text(Number(data["result"]).toPrecision(4)+" degrees");
+	}
+	
+	function getSpeedData() {
+		$.get( "https://api.particle.io/v1/devices/370033001347343432313031/angle2?access_token=cfe7909546aa4ea6228edb78d98aa4b3b461f38a").then(
+			function ( data ) {
+				writeSpeedData( data );
+			}, 
+			function (data) {
+				getSpeedData();
+			});
+	}
+</script>
+</head>
+<body>
+	<br /><br /><br /><br />
+	<h1 id="title">LiveRider</h1>
+	<h1><span id='speed'>...</span></h1>
+	<h1><span id='angle'>...</span></h1>
+	<h1>Shift to: <span id='gear'></span></h1>
+</body>
