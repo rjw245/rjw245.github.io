@@ -1,0 +1,25 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Riley's Blog
+email: rjw245@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+    Hey, my name is Riley, and I use this blog to document my work
+    on various projects and write down my thoughts about things I learn
+    at work and in life. I recently graduated from Tufts University with
+    a B.S. in Computer Engineering and am currently working as an
+    embedded software engineer at Levant Power in Woburn, MA, a startup
+    developing an active suspension system for the automotive industry.
+    In my spare time, I enjoy hacking together electronics projects,
+    playing with FPGAs, hiking, biking, and traveling.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://rileywood.me" # the base hostname & protocol for your site
+github_username: rjw245
+
+# Build settings
+markdown: kramdown
