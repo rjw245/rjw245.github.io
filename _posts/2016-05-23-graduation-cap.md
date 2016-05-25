@@ -64,4 +64,9 @@ Here are some closeups of the internals.
     <figcaption>Closeup of the Arduino Uno</figcaption>
 </figure>
 
+<figure>
+    <a href="/assets/img/graduation-cap/gradcapback.gif"><img src="/assets/img/graduation-cap/gradcapback.gif"></a>
+    <figcaption>A behind view of me wearing the cap.</figcaption>
+</figure>
+
 
