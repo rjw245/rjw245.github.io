@@ -1,10 +1,10 @@
 ---
 layout:     post
-title:      Graduation
+title:      Light-up Graduation Cap
 date:       2016-05-23 12:00:00
 summary:    I just graduated college!
-categories: projects personal
 thumbnail:  graduation-cap
+project: true
 tags:
  - demo
  - action

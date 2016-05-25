@@ -1,24 +1,52 @@
-# Site settings
-title: "Riley Wood"
-email: rjw245@gmail.com
-description: >
-    Riley's blog about projects and things.
-baseurl: ""
-url: "http://rileywood.me/"
-title_description: "Riley's blog. Long form description goes here."
-title_image: "img/me.png"
+# Site
+title:          Riley Wood's Blog
+bio:            "I'm an embedded systems engineer who loves the outdoors."
+description:    "This is my blog, where I write about things that are important to me and document the personal projects I work on."
+picture:        'assets/img/Logo.png'
+author-pic:     'assets/img/me.jpg'
+locale:         en_US
+url:            
 
-# Social usernames/URLs
-github_username: rjw245
-linkedin_link: https://www.linkedin.com/in/rileywood
-
-
-# Build settings
-markdown: kramdown
-
+# Jekyll
+permalink:      /:title/
+markdown:       kramdown
+highlighter:    rouge
 kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  enable_coderay: false
+sass:
+  sass_dir: _sass
+  style: compressed
 
-permalink: pretty
-exclude: [vendor]
+# Social
+# if you don't have any of social below, comment the line.
+email: rjw245@gmail.com
+github: rjw245
+stackoverflow: 6378818/riley-wood #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+linkedin: rileywood
+#xing: username
+steam: riolio11
+#dribbble: username
+youtube: WoodRiley
+
+# Paginate
+# if you don't need pagination, comment the *paginate* configs below
+# paginate: 5
+# paginate_path: "blog/:num/"
+
+# Gems
+gems:
+  - jekyll-mentions
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-paginate
+
+jekyll-mentions:
+    base_url: https://github.com
+
+# Exclude list
+exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]
