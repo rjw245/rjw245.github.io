@@ -50,4 +50,18 @@ via a USB cable (which runs down my back and makes me look like a robot). It all
 sort of came together at the last minute, but I'm pretty happy with how it
 turned out.
 
+Here are some closeups of the internals. 
+
+<figure class="half">
+    <a href="/assets/img/graduation-cap/neopixel1.jpg"><img src="/assets/img/graduation-cap/neopixel1.jpg"></a>
+    <a href="/assets/img/graduation-cap/neopixel3.jpg"><img src="/assets/img/graduation-cap/neopixel3.jpg"></a>
+    <figcaption>Closeup of the Neopixels</figcaption>
+</figure>
+
+<figure class="half">
+    <a href="/assets/img/graduation-cap/arduino1.jpg"><img src="/assets/img/graduation-cap/arduino1.jpg"></a>
+    <a href="/assets/img/graduation-cap/arduino2.jpg"><img src="/assets/img/graduation-cap/arduino2.jpg"></a>
+    <figcaption>Closeup of the Arduino Uno</figcaption>
+</figure>
+
 
