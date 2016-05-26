@@ -13,9 +13,11 @@
             {% for post in site.posts %} 
                 {% if post.project %}
                     <a href="{{ site.url }}{{ post.url }}">
-                        <li class="post-li">
+                        <li>
+                        <figure>
                             <img class="thumbnail" src="{{ site.url }}../{{ post.thumbnail }}" />
-                            <p class="post-title">{{ post.title }}</p>
+                            <figcaption>{{ post.title }}</figcaption>
+                        </figure>
                         </li>
                     </a>
                 {% endif %}
