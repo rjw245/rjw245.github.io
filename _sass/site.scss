@@ -140,6 +140,14 @@ body {
 		}
 	}
 }
+img.thumbnail {
+    max-height: 150px;
+    vertical-align: middle;
+    margin:0 0 5px 0;
+}
+.post-title {
+    margin: 0;
+}
 .title {
 	font-size: 0.9em;
 	margin: 1.875em auto -0.625em auto;

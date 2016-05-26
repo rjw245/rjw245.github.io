@@ -3,21 +3,26 @@
 {% include head.html %}
 
 <body>
-    {% include nav.html %}
-    <div class="wrapper">
-        <div class="title">
-            <h1>{{ page.title }}</h1>
-        </div>
-        <div class="project-list">
-            {% for post in site.posts %} 
-              {% if post.project %}
-            <ul>
-                <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
-            </ul>
-              {% endif %}
-            {% endfor %}
-        </div>
+{% include nav.html %}
+<div class="wrapper">
+    <div class="title">
+        <h1>{{ page.title }}</h1>
     </div>
-    {% include footer.html %}
+    <div class="project-list">
+        <ul>
+            {% for post in site.posts %} 
+                {% if post.project %}
+                    <a href="{{ site.url }}{{ post.url }}">
+                        <li class="post-li">
+                            <img class="thumbnail" src="{{ site.url }}../{{ post.thumbnail }}" />
+                            <p class="post-title">{{ post.title }}</p>
+                        </li>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% include footer.html %}
 </body>
 </html>
