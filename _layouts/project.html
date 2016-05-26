@@ -14,10 +14,8 @@
                 {% if post.project %}
                     <a href="{{ site.url }}{{ post.url }}">
                         <li>
-                        <figure>
+                            <span class="post-title">{{ post.title }}</span>
                             <img class="thumbnail" src="{{ site.url }}../{{ post.thumbnail }}" />
-                            <figcaption>{{ post.title }}</figcaption>
-                        </figure>
                         </li>
                     </a>
                 {% endif %}
