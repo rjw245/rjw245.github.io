@@ -121,6 +121,9 @@ body {
 		a {
 			text-decoration: none;
 		}
+        figure {
+            margin: 0.25em 3px;
+        }
 	}
 	a {
 		&:link {
@@ -143,7 +146,7 @@ body {
 }
 img.thumbnail {
     max-height: 100px;
-    margin: 1.25em 0 1.25em 0;
+    margin: 0.5em 0 0.5em 0;
 }
 .post-title {
     margin: 0;
