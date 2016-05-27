@@ -9,13 +9,21 @@
             <h1>{{ page.title }}</h1>
         </div>
         <div class="post-list">
+            <ul>
             {% for post in site.posts %} 
                 {% if post.project == null %}
-            <ul>
-                <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
-            </ul>
+                <a href="{{ site.url }}{{ post.url }}">
+                    <li>
+                    <div class="alignment-boxes">
+                        <div class="post-title">{{ post.title }}</div>
+                        <div class="box-flex"></div>
+                        <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+                    </div>
+                    </li>
+                </a>
                 {% endif %}
             {% endfor %}
+            </ul>
         </div>
     </div>
     {% include footer.html %}
