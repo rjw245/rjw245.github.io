@@ -31,6 +31,8 @@ linkedin: rileywood
 steam: riolio11
 #dribbble: username
 youtube: WoodRiley
+google:
+    analytics: UA-78463770-1 
 
 # Paginate
 # if you don't need pagination, comment the *paginate* configs below
