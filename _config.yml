@@ -8,7 +8,7 @@ locale:         en_US
 url:            
 
 # Jekyll
-permalink:      /:title/
+permalink:      /blog/:year/:month/:day/:title/ 
 markdown:       kramdown
 highlighter:    rouge
 kramdown:

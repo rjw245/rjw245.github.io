@@ -5,6 +5,7 @@ date:       2016-05-23 12:00:00
 summary:    My last build of college, for my graduation ceremony.
 thumbnail:  assets/img/graduation-cap/gradcapback.gif
 project: true
+permalink: projects/:title
 tags:
     - project
     - neopixel
