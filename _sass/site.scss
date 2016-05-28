@@ -162,6 +162,8 @@ img.preview {
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
     -webkit-box-align: center;
+
+    flex-wrap: wrap;
 }
 .box-flex {
     -moz-box-flex: 1;
