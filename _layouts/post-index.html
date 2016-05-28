@@ -15,7 +15,12 @@
                 <a href="{{ site.url }}{{ post.url }}">
                     <li>
                     <div class="alignment-boxes">
-                        <div class="post-title">{{ post.title }}</div>
+                        <div class="post-title">
+                            {% if post.thumbnail %}
+                                <i class="fa fa-fw fa-{{ post.thumbnail }}"></i>
+                            {% endif %}
+                            {{ post.title }}
+                        </div>
                         <div class="box-flex"></div>
                         <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
                     </div>
