@@ -3,7 +3,7 @@ layout:     post
 title:      Light-up Graduation Cap
 date:       2016-05-23 12:00:00
 summary:    My last build of college, for my graduation ceremony.
-preview:  assets/img/graduation-cap/gradcapback.gif
+preview:  assets/img/graduation-cap/gradcapback-small.gif
 project: true
 permalink: projects/:title
 tags:
