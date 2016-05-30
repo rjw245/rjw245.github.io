@@ -5,7 +5,7 @@ description:    "This is my blog, where I write about things that are important 
 picture:        'assets/img/Logo.png'
 author-pic:     'assets/img/me-small.jpg'
 locale:         en_US
-url:            
+url:
 
 # Jekyll
 permalink:      /blog/:year/:month/:day/:title/ 
@@ -54,5 +54,3 @@ jekyll-mentions:
 exclude: [README.md, Gemfile, Gemfile.lock, node_modules, gulpfile.js, package.json, _site, src, vendor, CNAME, LICENSE, Rakefile]
 
 
-# Octopress
-post_layout: post
