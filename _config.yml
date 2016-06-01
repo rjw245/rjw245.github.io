@@ -7,6 +7,7 @@ author-pic:     'assets/img/me-small.jpg'
 locale:         en_US
 timezone: America/New_York
 url:
+remoteurl: http://rileywood.me
 
 # Jekyll
 permalink:      /blog/:year/:month/:day/:title/ 
