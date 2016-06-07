@@ -23,7 +23,7 @@ Pretty cool right? Here's how it works:
 Electronics
 -----------
 
-I taped Neopixel LED strips on the cardboard beneath the
+I taped [Neopixel LED strips](https://www.adafruit.com/category/168) on the cardboard beneath the
 fabric of my graduation cap and can control them with an Arduino Uno, housed
 inside the cap beneath the cardboard. The Uno is a bit unwieldy -- I would have
 much preferred to extract the microcontroller and put it on a small breadboard,
