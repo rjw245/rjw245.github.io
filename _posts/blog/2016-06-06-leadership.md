@@ -43,4 +43,4 @@ useful to someone and that maybe some people who have a bit more leadership expe
 </figure>
 
 --------
-Thanks to Evan Bederman for reading drafts of this.
+Thanks to Evan Bederman and Ann Wood for reading drafts of this.
