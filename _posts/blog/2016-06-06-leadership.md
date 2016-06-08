@@ -14,7 +14,7 @@ Two weeks ago, I graduated college. While I'm home, I'm taking some time to writ
 
 ------------
 
-Before going to college, I didn't see myself as a leader. In fact, I shied away from the spotlight whenever possible. I thought I was just too quiet to lead a group of people, and that I would probably screw it up anyway. This is a pretty natural fear---most people don't consider themselves leadership material. That said, I'm glad I was able to escape this mindset in college.
+Before going to college, I didn't see myself as a leader. In fact, I shied away from the spotlight whenever possible. I thought I was just too quiet to lead a group of people, and I figured I would probably screw it up anyway. This is a pretty natural fear---most people don't consider themselves leadership material. That said, I'm glad I was able to escape this mindset in college.
 
 While at Tufts, I had the privilege of leading the Tufts robotics club, and through that experience I came to see that I *can* lead, and I can do so well as long as I am willing to improve myself. I'd like to discuss the lessons I learned which helped me to overcome my initial shortcomings as a leader. My hope is that this post will be helpful to anyone who finds themselves in a leadership role with no clue what to do, because I can definitely relate.
 
