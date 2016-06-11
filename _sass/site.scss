@@ -165,12 +165,28 @@ img.preview {
     -webkit-align-content: center;
     align-content: center;
 }
+.post-title {
+    font-size: 14px;
+}
 .post-date {
     flex: 1;
     -webkit-flex: 1;
     -moz-flex: 1;
     text-align: right;
     white-space: nowrap;
+}
+.post-summary {
+    margin-top: 3px;
+    margin-bottom: 2px;
+    margin-left:23px;
+    color: #666666;
+    font-size: 11px;
+    font-style: italic;
+}
+@media only screen and(max-width: 700px) {
+    .post-summary {
+        display: none;
+    }
 }
 .title {
 	font-size: 0.9em;
