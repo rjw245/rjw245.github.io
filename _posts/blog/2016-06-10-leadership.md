@@ -10,7 +10,7 @@ tags:
     - blog
 ---
 
-Two weeks ago, I graduated from college, and then shortly after, I started this blog. I'm writing this post as a kind of retrospective on my college career. I want to share with the Internet the most important lessons I learned as an undergrad. I think I'm going to split this one into two parts. In this post, I'll share a few lessons I learned as president of the [Tufts robotics club](http://tuftsroboticsclub.com/). My next post will focus on the importance of lifelong learning.
+Two weeks ago, I graduated from college, and then shortly after, I started this blog. I'm writing this post as a kind of retrospective on my college career. I want to share with the Internet the most important lessons I learned as an undergrad. I think I'm going to split this one into two parts. In this post, I'll share a few lessons I learned as president of the [Tufts Robotics Club](http://tuftsroboticsclub.com/). My next post will focus on the importance of lifelong learning.
 
 It's my belief that few people consider themselves "leadership material" before stepping into their first leadership role. I certainly didn't in high school. I was and still am a very reserved person---not the type you'd think of to command the attention of a room of people. So when I was offered the opportunity to run for president of my college robotics team, I was pretty hesitant. My head swam with reasons NOT to do it.
 
