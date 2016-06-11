@@ -1,0 +1,46 @@
+---
+layout: post-index
+title: All Posts
+excerpt: "A List of Posts"
+---
+
+<div class="post-list">
+    <ul>
+        {% for post in paginator.posts %} 
+            {% if post.project == null %}
+                <a href="{{ site.url }}{{ post.url }}">
+                    <li>
+                        <div class="alignment-boxes">
+                            <div class="post-title">
+                                {% if post.thumbnail %}
+                                    <i class="fa fa-fw fa-{{ post.thumbnail }}"></i>
+                                {% endif %}
+                                {{ post.title }}
+                            </div>
+                            <div class="box-flex"></div>
+                            <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+                        </div>
+                        <div class="post-summary">{{ post.summary }}</div>
+                    </li>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<!-- Pagination links -->
+{% if paginator.pages > 1 %}
+    <div class="pagination">
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
+        {% else %}
+        <span class="previous">Previous</span>
+        {% endif %}
+        <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path }}" class="next">Next</a>
+        {% else %}
+        <span class="next ">Next</span>
+        {% endif %}
+    </div>
+{% endif %}

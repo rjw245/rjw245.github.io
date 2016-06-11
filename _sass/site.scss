@@ -188,6 +188,19 @@ img.preview {
         display: none;
     }
 }
+.pagination {
+    font-size: 0.85em;
+    text-align: center;
+    margin-bottom: 1em;
+
+    .previous {
+        margin-right: 4em;
+    }
+
+    .next {
+        margin-left: 4em;
+    }
+}
 .title {
 	font-size: 0.9em;
 	margin: 1.875em auto -0.625em auto;

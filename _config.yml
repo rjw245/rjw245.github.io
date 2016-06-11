@@ -38,8 +38,8 @@ google:
 
 # Paginate
 # if you don't need pagination, comment the *paginate* configs below
-# paginate: 5
-# paginate_path: "blog/:num/"
+paginate: 10
+paginate_path: "blog/:num/"
 
 # Gems
 gems:
