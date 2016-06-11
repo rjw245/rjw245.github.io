@@ -18,7 +18,7 @@ It's my personal belief that no one considers themselves "leadership material" b
 
 "You'll just embarrass yourself!"
 
-"You don't know enough, people won't learn anything with you as president!"
+"You don't know enough. You're not qualified to be president!"
 
 said my brain. On the other hand, in retrospect, I was a pretty good fit, and I can see why the president at the time was eying me for the job. I was passionate about Arduino programming---heck, it's what got me interested in embedded systems. I was also a core member, and hadn't missed a meeting all year. I really liked the robotics club, and saw no reason not to run for president other than the above insecurities. I managed to get over each of them and through it I
 learned a few things, which I'd like to share here.
