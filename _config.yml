@@ -43,10 +43,8 @@ paginate_path: "blog/:num/"
 
 # Gems
 gems:
-  - jekyll-mentions
   - jekyll-feed
   - jekyll-sitemap
-  - jekyll-gist
   - jekyll-paginate
 
 jekyll-mentions:
