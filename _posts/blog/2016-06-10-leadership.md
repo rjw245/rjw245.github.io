@@ -38,7 +38,7 @@ point: acknowledge and embrace the fact that you don't know what you're doing in
 In summary, there's no way you can do everything yourself, so ask other members of your organization for help. There's also no way you alone have enough good ideas to bring the organization to new heights. So get ideas from other
 people! Start discussions, learn from one another. You will almost always be stronger leading as a group rather than leading alone.
 
-That just about sums up what I've learned about leadership thus far. Let me stress that last part: **thus far**. I'm not done learning how to be a good leader. I mean, hey, I've only just graduated from college and haven't even started working yet. It would be naive to say that I know everything there is to know about leadership. But do I hope that what I've written here will be useful to someone, and that perhaps others with more leadership experience can relate to some of these
+That just about sums up what I've learned about leadership thus far. Let me stress that last part: **thus far**. I'm not done learning how to be a good leader. I mean, hey, I've only just graduated from college and haven't even started working yet. It would be naive to say that I know everything there is to know about leadership. But I do hope that what I've written here will be useful to someone, and that perhaps others with more leadership experience can relate to some of these
 ideas. Thanks for reading, and stay tuned for my next post on lifelong learning.
 
 <figure>
