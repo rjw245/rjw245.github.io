@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Computer Architecture Research Project
+title:      Testbed for Computer Architecture Research
 date:       2016-05-13
 summary:    An independent project in computer architecture completed during my last semester at Tufts.
 preview:    assets/img/comp-arch-research/zedboard-small.png
