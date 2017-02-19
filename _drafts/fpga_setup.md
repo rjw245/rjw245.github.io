@@ -1,15 +1,15 @@
 ---
 layout:     post
-title:      Getting Started with the DE2i-150 Dev Board
+title:      Getting Started with the DE2i-150 FPGA/Intel Atom Board on Linux
 date:       2017-02-19
-summary:    Setting up Altera Quartus on Ubuntu
-thumbnail:  smile-o
+summary:    Setting up Altera Quartus on Linux with the DE2i-150, an awesome dev board combining an Altera FPGA and an Intel Atom CPU.
+thumbnail:  terminal
 tags:
 - altera
 - fpga
 - linux
 ---
-I'v been itching for a side project lately, so I decided to dig out my DE2i-150 FPGA/Intel Atom development board and start playing with it. I had previously worked with it a bit in a Windows environment, but now that I'm using Ubuntu full-time, I needed to set it up in Linux. I'm going to document all the steps I took to get the board up and running in the hopes that this helps other people get going faster.
+I'v been itching for a side project lately, so I decided to dig out my DE2i-150 FPGA/Intel Atom development board and start playing with it. I had previously worked with it a bit in a Windows environment, but now that I'm using Ubuntu full-time, I need to set it up in Linux. I'm going to document all the steps I took to get the board up and running in the hopes that this helps other people get going faster.
 
 <figure class="full">
     <img src="/assets/img/quartus_install/de2i-150.jpg">
@@ -20,8 +20,7 @@ I'v been itching for a side project lately, so I decided to dig out my DE2i-150 
 
 The latest version of Quartus (as of this writing) is 16.1.2 -- unfortunately, template projects for the DE2i-150 board are only supported for versions 15.1.0 and 16.0.0. So I elected to download the slightly older 16.0.0 release. No big deal.
 
-Here's a link to Quartus Prime Lite 16.0.0:
-[http://dl.altera.com/16.0/?edition=lite]()
+[Link to Quartus 16.0.0 Lite](http://dl.altera.com/16.0/?edition=lite)
 
 The download will come with a setup.sh script in the top-level directory. I recommend running the script as root so that you can install the application in `/opt`:
 ~~~
@@ -49,12 +48,13 @@ PATH=$PATH:/opt/altera_lite/16.0/quartus/bin
 ~~~
 At startup, this script and all others in /etc/profile.d will be sourced.
 Adapt this script to your system, replacing `/opt/altera_lite/16.0` with the install path you used before.
+You'll need to reboot for changes to take effect.
 
 ## Configuring the USB Blaster
 
 Now it's time to set up the USB Blaster, which we will use to program the FPGA. Altera Quartus comes with a little daemon
 called `jtagd` which runs in the background and provides a connection between Altera tools and the Linux
-USB drivers, so that Quartus can use the USB Blaster. By default, only `root` will be given access to the USB
+USB drivers so that Quartus can use the USB Blaster. By default, only `root` will be given access to the USB
 device -- we can leverage udev rules to give normal users access.
 
 Power your DE2i-150 board and plug it into your computer. Type the command `lsusb` to show the USB devices currently
@@ -76,7 +76,7 @@ Navigate to `/etc/udev/rules.d`. Create a file as root called `51-usbblaster.rul
 sudo nano 51-usbblaster.rules
 ~~~
 Inside that file, paste the following:
-~~~
+~~~ bash
 # For Altera USB-Blaster permissions.
 SUBSYSTEM=="usb",\
 ENV{DEVTYPE}=="usb_device",\
@@ -145,3 +145,107 @@ sudo killall -9 jtagd
 and run `jtagconfig` again, which will start `jtagd` in the background.
 A similar error can occur if you unplug the USB Blaster while running
 Quartus.
+
+## Programming the DE2i-150 with Quartus
+
+Now that the USB Blaster is set up, we can create a simple program
+in Quartus and flash it onto the FPGA. To get going quickly, let's use
+some of the baseline designs that Intel hosts online. (Compatibility
+issues with these design files were the motivation for installing
+Quartus 16.0.0 rather than the latest version.)
+
+[Link to baseline pinouts for the DE2i-150.](https://cloud.altera.com/devstore/platform/?board=53)
+
+They host pinouts for revisions B and C of the board. To find out which revision yours is,
+look at the bottom left corner of the undersize of the board, as shown below:
+
+<figure class="full">
+    <img src="/assets/img/quartus_install/de2i-150_rev.jpg">
+    <figcaption>The C indicates this is a Rev C board</figcaption>
+</figure>
+
+Download whichever pinout is appropriate for your board rev. You should
+receive a .par file.
+
+Open quartus by running `quartus` at the command line, assuming the quartus
+binaries have been added to your `PATH`. In the main window, select "New Project Wizard".
+I recommend creating a workspace folder for everything related to quartus, and creating a folder
+inside of that for each project.
+Name the project whatever you'd like, and select to use a "Project template":
+
+<figure class="full">
+    <img src="/assets/img/quartus_install/project_template.png">
+    <figcaption>The C indicates this is a Rev C board</figcaption>
+</figure>
+
+Click the link that says "add the installation directory to the design template search paths".
+In the window that pops up, click the link that says "Install design template".
+In the first box, choose the .par file you downloaded.
+In the second box, choose the folder you would like to use as your quartus workspace.
+For example, I created a folder called `quartus` in my home directory.
+
+<figure class="full">
+    <img src="/assets/img/quartus_install/template_install.png">
+</figure>
+
+Hit OK and the .par file will be expanded and installed in the workspace.
+In the parent window, we will add the workspace directory to the search path.
+
+<figure class="full">
+    <img src="/assets/img/quartus_install/add_search_dir.png">
+</figure>
+
+Click the "..." button to navigate to the workspace where your template
+was installed. Click the Add button to add the workspace to your search path.
+Click OK to exit this window, and you should see one template populate
+in the New Project Wizard.
+
+<figure class="full">
+    <img src="/assets/img/quartus_install/new_template.png">
+</figure>
+
+Click Next and then Finish. A new project will be created with the pinout
+of the board preconfigured which avoids a lot of tedious work. In the
+Project Navigator you'll see one Verilog file. Open it up, and
+you'll see auto-generated ports for all I/O on the board -- cool!
+
+We'll add a small snippet of Verilog at the bottom of this file, just before
+the `endmodule` tag, to make one of the onboard LEDs blink.
+
+~~~ verilog
+//=======================================================
+//  Structural coding
+//=======================================================
+
+/* reg */
+reg [32:0] counter;
+reg state;
+
+/* assign */
+assign LEDG[0] = state;
+
+/* always */
+always @ (posedge CLOCK_50) begin
+  counter <= counter + 1;
+  state <= counter[24]; // <------ data to change
+end
+~~~
+
+This will setup a counter variable which is incremented at every
+positive edge of the clock input. The register `state` will store the
+value of one of the high-order bits of the counter at every positive edge.
+This state register is assigned to the first green LED, causing it to blink.
+
+Compile the Verilog by clicking the first blue arrow at the top of the window.
+![compile](/assets/img/quartus_install/compile_button.png 'compile')
+When that's done, open the Programmer to download the program
+to the FPGA.
+![program](/assets/img/quartus_install/program_button.png 'program')
+In the window that opens up, click Hardware Setup...
+Select your USB Blaster from the dropdown list and then close the window.
+Click the Auto Detect button, at which point the FPGA should show up
+in the list. If your compiled code is not already there, double click under
+file and navigate to the .sof file you just generated.
+Check the box under "Program/Configure" and then press Start over on the left.
+This will load the code onto the DE2i-150, and hopefully you will see the rightmost
+green LED begin to blink!
