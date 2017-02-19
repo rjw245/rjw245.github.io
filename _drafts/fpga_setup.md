@@ -245,7 +245,7 @@ In the window that opens up, click Hardware Setup...
 Select your USB Blaster from the dropdown list and then close the window.
 Click the Auto Detect button, at which point the FPGA should show up
 in the list. If your compiled code is not already there, double click under
-file and navigate to the .sof file you just generated.
+"File" and navigate to the .sof file you just generated.
 Check the box under "Program/Configure" and then press Start over on the left.
 This will load the code onto the DE2i-150, and hopefully you will see the rightmost
 green LED begin to blink!
