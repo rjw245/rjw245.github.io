@@ -33,22 +33,19 @@ via a USB cable (which runs down my back and makes me look like a robot).
 
 Here are some closeups of the internals. 
 
-<figure class="half">
-    <a href="/assets/img/graduation-cap/neopixel1.jpg"><img src="/assets/img/graduation-cap/neopixel1.jpg"></a>
-    <a href="/assets/img/graduation-cap/neopixel3.jpg"><img src="/assets/img/graduation-cap/neopixel3.jpg"></a>
-    <figcaption>Closeup of the Neopixels</figcaption>
-</figure>
+![](/assets/img/graduation-cap/neopixel1.jpg){:height="360px" width="360px"}
+![](/assets/img/graduation-cap/neopixel3.jpg){:height="360px" width="360px"}
 
-<figure class="half">
-    <a href="/assets/img/graduation-cap/arduino1.jpg"><img src="/assets/img/graduation-cap/arduino1.jpg"></a>
-    <a href="/assets/img/graduation-cap/arduino2.jpg"><img src="/assets/img/graduation-cap/arduino2.jpg"></a>
-    <figcaption>Closeup of the Arduino Uno</figcaption>
-</figure>
+Closeup of the Neopixels
 
-<figure>
-    <a href="/assets/img/graduation-cap/gradcapback.gif"><img src="/assets/img/graduation-cap/gradcapback.gif"></a>
-    <figcaption>A behind view of me wearing the cap.</figcaption>
-</figure>
+![](/assets/img/graduation-cap/arduino1.jpg){:height="360px" width="360px"}
+![](/assets/img/graduation-cap/arduino2.jpg){:height="360px" width="360px"}
+
+Closeup of the Arduino Uno
+
+![](/assets/img/graduation-cap/gradcapback.gif){:height="360px" width="360px"}
+
+A behind view of me wearing the cap.
 
 Software
 --------
