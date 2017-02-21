@@ -12,6 +12,7 @@ remoteurl: http://rileywood.me
 # Jekyll
 permalink:      /blog/:year/:month/:day/:title/ 
 markdown:       kramdown
+theme:          minima
 highlighter:    rouge
 kramdown:
   auto_ids: true
