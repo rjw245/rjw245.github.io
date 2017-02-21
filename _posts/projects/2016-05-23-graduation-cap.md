@@ -33,17 +33,17 @@ via a USB cable (which runs down my back and makes me look like a robot).
 
 Here are some closeups of the internals. 
 
-![](/assets/img/graduation-cap/neopixel1.jpg){:height="360px" width="360px"}
-![](/assets/img/graduation-cap/neopixel3.jpg){:height="360px" width="360px"}
+![](/assets/img/graduation-cap/neopixel1.jpg){:width="300px"}
+![](/assets/img/graduation-cap/neopixel3.jpg){:width="300px"}
 
 Closeup of the Neopixels
 
-![](/assets/img/graduation-cap/arduino1.jpg){:height="360px" width="360px"}
-![](/assets/img/graduation-cap/arduino2.jpg){:height="360px" width="360px"}
+![](/assets/img/graduation-cap/arduino1.jpg){:width="300px"}
+![](/assets/img/graduation-cap/arduino2.jpg){:width="300px"}
 
 Closeup of the Arduino Uno
 
-![](/assets/img/graduation-cap/gradcapback.gif){:height="360px" width="360px"}
+![](/assets/img/graduation-cap/gradcapback.gif){:width="300px"}
 
 A behind view of me wearing the cap.
 
