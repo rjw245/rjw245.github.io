@@ -45,4 +45,12 @@ Then I define which of those notes should be played for a particular mode. Initi
 
 Anywhere there is a `False` between two `Trues` is a full step, and anywhere there are two adjacent `Trues` is a half step. It's important to note that there there is one fewer entry in `cur_mode` than in `frequencies`; this is because a scale concludes on the "1" note of the next octave, so we should wrap around to the first index of `cur_mode` when deciding whether to play this note.
 
+Finally, I set up a while loop which will play the current mode, then tweak it to move to the next mode. First, the code which plays the scale:
+
+<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=74:83&footer=minimal"></script>
+
+It's fairly straightforward: move through cur_mode, and play a note if the mode says it should be played. You can see where I wrap around the end of `cur_mode`.
+
+Finally, it's time for the really cool part: transforming the current mode into a new one.
+
 <script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=84:102&footer=minimal"></script>
