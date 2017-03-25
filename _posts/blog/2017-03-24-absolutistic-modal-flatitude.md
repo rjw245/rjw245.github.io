@@ -30,9 +30,9 @@ You can see here that we've flatted the 7th note:
 
 <img src="/assets/img/amf/mixolydian_keyscale.png" style="width:400px;">
 
+If you start counting intervals at the fourth note, you'll notice the familiar *full, full, half, full, full, full, half* step pattern show up once more.
 
-So in summary, you move from one mode to the next by flatting the one note in the scale that, when flatted, creates the necessary interval pattern somewhere else in the scale.
 
-My guitar teacher [Sam Davis](http://samdavis.com) calls this relationship between modes "Absolutistic Modal Flatitude", hence the name of this post.
+So in summary, you can move from one mode to the next by flatting the one note which lets you keep the necessary interval pattern somewhere in the scale. My guitar teacher [Sam Davis](http://samdavis.com) calls this relationship "Absolutistic Modal Flatitude", hence the name of this post.
 
 I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this simple algorithm to move between neighboring Western modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude), and I'll walk through it here.
