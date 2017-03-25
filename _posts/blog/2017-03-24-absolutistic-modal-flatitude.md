@@ -31,7 +31,7 @@ You can see here that we've flatted the 7th note:
 <img src="/assets/img/amf/mixolydian_keyscale.png" style="width:400px;">
 
 
-So this is how you move from one mode to the next: by flatting the one note in the scale that, when flatted, creates the necessary interval pattern somewhere else in the scale.
+So in summary, you move from one mode to the next by flatting the one note in the scale that, when flatted, creates the necessary interval pattern somewhere else in the scale.
 
 My guitar teacher [Sam Davis](http://samdavis.com) calls this relationship between modes "Absolutistic Modal Flatitude", hence the name of this post.
 
