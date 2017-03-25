@@ -2,7 +2,7 @@
 layout:     post
 title:      Absolutistic Modal Flatitude!
 date:       2017-03-24
-summary:    Using Python to illustrate modes of a C major scale.
+summary:    Using Python to illustrate modes of a scale.
 thumbnail:  music
 tags:
 - guitar
