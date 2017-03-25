@@ -35,4 +35,27 @@ If you start counting intervals at the fourth note, you'll notice the familiar *
 
 So in summary, you can move from one mode to the next by flatting the one note which lets you keep the necessary interval pattern somewhere in the scale. My guitar teacher [Sam Davis](http://samdavis.com) calls this relationship "Absolutistic Modal Flatitude", hence the name of this post.
 
-I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this simple algorithm to move between neighboring Western modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude), and I'll walk through it here.
+I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this simple algorithm to move between neighboring Western modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude).
+
+{% highlight python %}
+while True:
+    ...
+    # Find the full-full-full-half-step subpattern
+    # in the current mode (5 note subpattern)
+    subpattern = [False, True,  # Full step (one unplayed, next played)
+                  False, True,  # Full step
+                  False, True,  # Full step
+                  True]         # Half step
+    (start, end) = contains(subpattern, cur_mode)
+
+    # Flat the 4th note of the subpattern to move us to a new mode
+    # of this scale
+    temp = cur_mode[(end-3) % len(cur_mode)]
+    cur_mode[(end-3) % len(cur_mode)] = cur_mode[(end-2) % len(cur_mode)]
+    cur_mode[(end-2) % len(cur_mode)] = temp
+
+    # Make sure C stays the root. If we wrap around modes, shift
+    # back to a C scale.
+    if not cur_mode[0]:
+        cur_mode.rotate(1)
+{% endhighlight %}
