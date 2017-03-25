@@ -37,60 +37,12 @@ So in summary, you can move from one mode to the next by flatting the one note w
 
 I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this algorithm to move between neighboring modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude).
 
-{% highlight python %}
-frequencies = OrderedDict()
-frequencies['C5'] = 523.25
-frequencies['C#'] = 554.37
-frequencies['D'] = 587.33
-frequencies['D#'] = 622.25
-frequencies['E'] = 659.25
-frequencies['F'] = 698.46
-frequencies['F#'] = 739.99
-frequencies['G'] = 783.99
-frequencies['G#'] = 830.61
-frequencies['A'] = 880.0
-frequencies['A#'] = 932.33
-frequencies['B'] = 987.77
-frequencies['C6'] = 1046.50
-{% endhighlight %}
+First I define all possible notes in the scale (aka the chromatic scale) with their frequencies (so that I can play them back):
+<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=43:57&footer=minimal"></script>
 
-{% highlight python %}
-# Initial values describe
-# the notes to play for the Ionian
-# mode
-cur_mode = deque([True,
-                  False,
-                  True,
-                  False,
-                  True,
-                  True,
-                  False,
-                  True,
-                  False,
-                  True,
-                  False,
-                  True])
-{% endhighlight %}
+Then I define which of those notes should be played for a particular mode. Initially, this is for the Ionian mode. `False` == don't play it, `True` == play it.
+<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=58:73&footer=minimal"></script>
 
-{% highlight python %}
-while True:
-    ...
-    # Find the full-full-full-half-step subpattern
-    # in the current mode (5 note subpattern)
-    subpattern = [False, True,  # Full step (one unplayed, next played)
-                  False, True,  # Full step
-                  False, True,  # Full step
-                  True]         # Half step
-    (start, end) = contains(subpattern, cur_mode)
+Anywhere there is a `False` between two `Trues` is a full step, and anywhere there are two adjacent `Trues` is a half step. It's important to note that there there is one fewer entry in `cur_mode` than in `frequencies`; this is because a scale concludes on the "1" note of the next octave, so we should wrap around to the first index of `cur_mode` when deciding whether to play this note.
 
-    # Flat the 4th note of the subpattern to move us to a new mode
-    # of this scale
-    temp = cur_mode[(end-3) % len(cur_mode)]
-    cur_mode[(end-3) % len(cur_mode)] = cur_mode[(end-2) % len(cur_mode)]
-    cur_mode[(end-2) % len(cur_mode)] = temp
-
-    # Make sure C stays the root. If we wrap around modes, shift
-    # back to a C scale.
-    if not cur_mode[0]:
-        cur_mode.rotate(1)
-{% endhighlight %}
+<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=84:102&footer=minimal"></script>
