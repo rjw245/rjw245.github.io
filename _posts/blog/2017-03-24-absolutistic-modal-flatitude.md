@@ -35,7 +35,42 @@ If you start counting intervals at the fourth note, you'll notice the familiar *
 
 So in summary, you can move from one mode to the next by flatting the one note which lets you keep the necessary interval pattern somewhere in the scale. My guitar teacher [Sam Davis](http://samdavis.com) calls this relationship "Absolutistic Modal Flatitude", hence the name of this post.
 
-I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this simple algorithm to move between neighboring Western modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude).
+I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this algorithm to move between neighboring modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude).
+
+{% highlight python %}
+frequencies = OrderedDict()
+frequencies['C5'] = 523.25
+frequencies['C#'] = 554.37
+frequencies['D'] = 587.33
+frequencies['D#'] = 622.25
+frequencies['E'] = 659.25
+frequencies['F'] = 698.46
+frequencies['F#'] = 739.99
+frequencies['G'] = 783.99
+frequencies['G#'] = 830.61
+frequencies['A'] = 880.0
+frequencies['A#'] = 932.33
+frequencies['B'] = 987.77
+frequencies['C6'] = 1046.50
+{% endhighlight %}
+
+{% highlight python %}
+# Initial values describe
+# the notes to play for the Ionian
+# mode
+cur_mode = deque([True,
+                  False,
+                  True,
+                  False,
+                  True,
+                  True,
+                  False,
+                  True,
+                  False,
+                  True,
+                  False,
+                  True])
+{% endhighlight %}
 
 {% highlight python %}
 while True:
