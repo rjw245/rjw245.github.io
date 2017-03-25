@@ -5,4 +5,4 @@ if test $? != 0; then
     printf "Adding github remote\n"
     git remote add github https://github.com/rjw245/rjw245.github.io.git
 fi
-git push github public:master
+git push github public:master -f
