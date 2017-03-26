@@ -20,7 +20,7 @@ I'v been itching for a side project lately, so I decided to dig out my DE2i-150 
 
 The latest version of Quartus (as of this writing) is 16.1.2 -- unfortunately, template projects for the DE2i-150 board are only supported for versions 15.1.0 and 16.0.0. So I elected to download the slightly older 16.0.0 release. No big deal.
 
-[Link to Quartus 16.0.0 Lite](http://dl.altera.com/16.0/?edition=lite)
+[Link to Quartus 16.0.0 Lite](http://dl.altera.com/16.0/?edition=lite){:target="_blank"}
 
 The download will come with a setup.sh script in the top-level directory. I recommend running the script as root so that you can install the application in `/opt`:
 ~~~
@@ -154,7 +154,7 @@ some of the baseline designs that Intel hosts online. (Compatibility
 issues with these design files were the motivation for installing
 Quartus 16.0.0 rather than the latest version.)
 
-[Link to baseline pinouts for the DE2i-150.](https://cloud.altera.com/devstore/platform/?board=53)
+[Link to baseline pinouts for the DE2i-150.](https://cloud.altera.com/devstore/platform/?board=53){:target="_blank"}
 
 They host pinouts for revisions B and C of the board. To find out which revision yours is,
 look at the bottom left corner of the undersize of the board, as shown below:
