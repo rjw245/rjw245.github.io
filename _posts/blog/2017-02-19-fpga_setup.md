@@ -157,7 +157,7 @@ Quartus 16.0.0 rather than the latest version.)
 [Link to baseline pinouts for the DE2i-150.](https://cloud.altera.com/devstore/platform/?board=53){:target="_blank"}
 
 They host pinouts for revisions B and C of the board. To find out which revision yours is,
-look at the bottom left corner of the undersize of the board, as shown below:
+look at the bottom left corner of the underside of the board, as shown below:
 
 <figure class="full">
     <img src="/assets/img/quartus_install/de2i-150_rev.jpg">
