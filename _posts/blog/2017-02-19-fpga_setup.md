@@ -175,7 +175,6 @@ Name the project whatever you'd like, and select to use a "Project template":
 
 <figure class="full">
     <img src="/assets/img/quartus_install/project_template.png">
-    <figcaption>The C indicates this is a Rev C board</figcaption>
 </figure>
 
 Click the link that says "add the installation directory to the design template search paths".
