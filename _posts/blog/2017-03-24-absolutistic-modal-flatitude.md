@@ -32,7 +32,7 @@ Compare the two scales on a keyboard, and you'll notice that the 7th note has be
 
 If you start counting intervals at the fourth note, you'll recognize the *full, full, half, full, full, full, half* step pattern.
 
-So in summary, you can move from one mode to the next by flatting the particular note which maintains the necessary interval pattern somewhere in the scale. My guitar teacher [Sam Davis](http://samdavis.com) calls this relationship "Absolutistic Modal Flatitude", hence the name of this post.
+So in summary, you can move from one mode to the next by flatting the particular note which maintains the necessary interval pattern somewhere in the scale. My guitar teacher [Sam Davis](http://samdavis.com){:target="_blank"} calls this relationship "Absolutistic Modal Flatitude", hence the name of this post.
 
 I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this algorithm to move between neighboring modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude).
 
