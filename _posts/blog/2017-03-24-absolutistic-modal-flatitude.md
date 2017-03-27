@@ -10,7 +10,7 @@ tags:
 - python
 ---
 
-I've been taking guitar lessons for a few months now and recently had the opportunity to combine music and programming to test my understanding of music theory.
+I've been taking guitar lessons for a few months now and recently had the opportunity to combine music and programming to strengthen my understanding of music theory.
 
 A few of my lessons focused specifically on how western scales are constructed. There are certain patterns that define these scales; one of the main patterns at play in the C major scale has to do with the distance between successive notes.
 
