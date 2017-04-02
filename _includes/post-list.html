@@ -1,29 +1,27 @@
 <div class="post-list">
     <ul>
-        {% for post in site.posts %} 
-            {% if post.project == null %}
-                <a href="{{ site.url }}{{ post.url }}">
-                    <li>
-                        <div class="alignment-boxes">
-                            <div class="post-title">
-                                {% if post.thumbnail %}
-                                    <i class="fa fa-fw fa-{{ post.thumbnail }}"></i>
-                                {% endif %}
-                                {{ post.title }}
-                            </div>
-                            <div class="box-flex"></div>
-                            <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+        {% for post in paginator.posts %} 
+            <a href="{{ site.url }}{{ post.url }}">
+                <li>
+                    <div class="alignment-boxes">
+                        <div class="post-title">
+                            {% if post.thumbnail %}
+                                <i class="fa fa-fw fa-{{ post.thumbnail }}"></i>
+                            {% endif %}
+                            {{ post.title }}
                         </div>
-                        <div class="post-summary">{{ post.summary }}</div>
-                    </li>
-                </a>
-            {% endif %}
+                        <div class="box-flex"></div>
+                        <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
+                    </div>
+                    <div class="post-summary">{{ post.summary }}</div>
+                </li>
+            </a>
         {% endfor %}
     </ul>
 </div>
 
 <!-- Pagination links -->
-{% if paginator.pages > 1 %}
+{% if paginator.total_pages > 1 %}
     <div class="pagination">
         {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
