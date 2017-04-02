@@ -42,7 +42,9 @@ body {
 	text-align: center;
 }
 .wrapper {
-	width: 50%;
+	width: 75%;
+	max-width: 800px;
+	min-width: 350px;
 	height: auto;
 	border: 1px solid $color_1;
 	background: $color_2;
@@ -60,16 +62,16 @@ body {
 	}
 }
 .article {
-	padding: 0.625em 5em 1.25em;
-	font-size: 0.85em;
+	padding: 2.625em 3em 1.25em;
+	font-size: 1em;
     text-align: justify;
 }
 #disqus_thread {
     margin-top: 50px;
 }
 .post-list {
-	padding: 0.625em 5em 1.25em;
-	font-size: 0.85em;
+	padding: 2.625em 3em 1.25em;
+	font-size: 1.1em;
 	ul {
 		list-style-type: none;
 		padding-left: 0;
@@ -201,7 +203,7 @@ img.preview {
     }
 }
 .title {
-	font-size: 0.9em;
+	font-size: 1em;
 	margin: 1.875em auto -0.625em auto;
 	text-align: center;
 	width: 60%;
@@ -224,7 +226,9 @@ img.preview {
 	display: block;
 	position: relative;
 	top: 0.625em;
-	width: 50%;
+	width: 75%;
+	max-width: 800px;
+	min-width: 350px;
 	height: 2.5em;
 	line-height: 2.5em;
 	border: 1px solid $color_1;
@@ -232,7 +236,7 @@ img.preview {
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
-	font-size: 0.85em;
+	font-size: 1em;
 	transition: all .2s;
 	> .list {
 		padding: 0 0.813em 0;
@@ -268,7 +272,6 @@ img.preview {
 }
 @media only screen and(max-width: 500px) {
      .nav {
-         font-size: 0.73em;
          top: 0.65em;
      }
      .nav-home {
@@ -307,7 +310,9 @@ img.preview {
 	display: block;
 	position: relative;
 	bottom: 0.625em;
-	width: 50%;
+	width: 75%;
+	max-width: 800px;
+	min-width: 350px;
 	height: 2.5em;
 	line-height: 2.5em;
 	border: 1px solid $color_1;
@@ -365,17 +370,8 @@ img.preview {
     }
 }
 @media only screen and(max-width: 700px) {
-	.wrapper {
-		width: 90%;
-	}
 	.article {
 		padding: 0.625em 1.25em 1.25em;
-	}
-	.nav {
-		width: 90%;
-	}
-	.footer {
-		width: 90%;
 	}
 	.home {
 		width: 80%;
@@ -386,7 +382,7 @@ img.preview {
 	.author-social {
 		padding: 0.2em;
 		margin: 0.188em;
-		font-size: 1.1em;
+		font-size: 1.5em;
 	}
 	.toc {
 		background: $color_0;
@@ -395,28 +391,19 @@ img.preview {
 	}
 }
 @media only screen and(min-width: 700px) and(max-width: 1050px) {
-	.wrapper {
-		width: 65%;
-	}
 	.article {
 		padding: 0.625em 2.5em 1.25em;
 	}
-	.nav {
-		width: 65%;
-	}
-	.footer {
-		width: 65%;
-	}
 	.home {
-		width: 55%;
+		width: 65%;
 	}
 	.nav-home {
-		width: 55%;
+		width: 65%;
 	}
 	.author-social {
 		padding: 0.2em;
 		margin: 0.375em;
-		font-size: 1.2em;
+		font-size: 1.8em;
 	}
 	.toc {
 		background: $color_0;
@@ -434,7 +421,7 @@ img.preview {
 	.author-social {
 		padding: 0.2em;
 		margin: 0.375em;
-		font-size: 1.4em;
+		font-size: 1.8em;
 	}
 }
 @media only screen and(min-width: 1300px) {
@@ -447,7 +434,7 @@ img.preview {
 	.author-social {
 		padding: 0.2em;
 		margin: 0.375em;
-		font-size: 1.6em;
+		font-size: 1.8em;
 	}
 	.toc {
 		display: block;
