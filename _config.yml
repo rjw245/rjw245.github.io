@@ -1,7 +1,7 @@
 # Site
 title:          Riley Wood's Blog
 bio:            "I'm an embedded systems engineer who loves the outdoors."
-description:    "This is my blog, where I write about things that are important to me and document the personal projects I work on."
+description:    "Project blog with a focus on embedded systems and software."
 picture:        'assets/img/Logo.png'
 author-pic:     'assets/img/me-small.jpg'
 locale:         en_US
