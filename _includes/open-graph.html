@@ -1,15 +1,31 @@
-    <!-- Twitter Cards -->
-    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-    {% if page.summary %}<meta name="twitter:description" content="{{ page.summary | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if site.twitter %}<meta name="twitter:site" content="@{{ site.twitter }}">
-    <meta name="twitter:creator" content="@{{ site.twitter }}">{% endif %}
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:image" content="{{ site.url }}/{{ site.picture }}">
-    <!-- Open Graph -->
-    <meta property="og:locale" content="{{ site.locale }}">
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}">
-    {% if page.summary %}<meta property="og:description" content="{{ page.summary | markdownify | strip_html | strip_newlines | escape_once }}">{% else %}<meta property="og:description" content="{{ site.description }}">{% endif %}
-    <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.url }}">
-    <meta property="og:site_name" content="{{ site.title }}">
-    <meta property="og:image" content="{{ site.url }}/{{ site.picture }}">
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+{% if page.summary %}
+    <meta name="twitter:description" content="{{ page.summary | markdownify | strip_html | strip_newlines | escape_once }}">{% else %}<meta property="twitter:description" content="{{ site.description }}">
+{% endif %}
+{% if site.twitter %}
+    <meta name="twitter:site" content="@{{ site.twitter }}">
+    <meta name="twitter:creator" content="@{{ site.twitter }}">
+{% endif %}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="{{ site.url }}/{{ site.picture }}">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="{{ site.locale }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{% if page.title %}{{ page.title }} &#8211; {% endif %}{{ site.title }}">
+{% if page.summary %}
+    <meta property="og:description" content="{{ page.summary | markdownify | strip_html | strip_newlines | escape_once }}">
+{% else %}
+    <meta property="og:description" content="{{ site.description }}">
+{% endif %}
+<meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:image" content="{{ site.url }}/{{ site.picture }}">
+{% for tag in page.tags %}
+    <meta property="article:tag" content="{{ tag }}">
+{% endfor %}
+<meta property="article:author" content="{{ site.author }}">
+{% if page.date %}
+    <meta property="article:published_time" content="{{ page.date }}">
+{% endif %}
