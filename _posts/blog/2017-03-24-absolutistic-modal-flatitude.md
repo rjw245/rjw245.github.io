@@ -59,6 +59,16 @@ Eventually the note we'll be flatting will be the root of the scale, the 1, in t
 
 <script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=109:114&footer=minimal"></script>
 
-And that's it! If you're curious about listening to each of the modes, you can find a link to the code above. I had a lot of fun with this quick project and it really helped me to understand modes better. I think that in general boiling a problem down to simple logic and implementing it in code is an excellent test of how well you understand a given topic.
+And that's it! If you're curious about listening to each of the modes, you can find a link to the code above. Alternatively, you can listen to the playback below:
+
+<div align="center">
+<audio controls>
+ <source src="/assets/audio/amf_scales.mp3"
+         type='audio/mp3'>
+ <p>Your user agent does not support the HTML5 Audio element.</p>
+</audio>
+</div>
+
+I had a lot of fun with this quick project and it really helped me to understand modes better. I think that in general boiling a problem down to simple logic and implementing it in code is an excellent test of how well you understand a given topic.
 
 I hope this was an interesting read, and please let me know what you think in the comments.
