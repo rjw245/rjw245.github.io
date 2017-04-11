@@ -39,7 +39,7 @@ What is a *context switch* you ask? This is when a scheduler changes from execut
 
 The scheduler I've written maintains some state about each task which allows it to do this context switch. This state is stored in a task descriptor which themselves are stored in a circular queue. Take a look at the task descriptor struct below:
 
-<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/master/scheduler.h?slice=15:20&footer=minimal"></script>
+<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/1.0.2/scheduler.h?slice=15:20&footer=minimal"></script>
 
 The most important member to note is `task_sp`. This member points to the task stack so that we can restore it when activating the task. In a more advanced scheduler, you might see additional information in the task descriptor, such as its priority or state.
 
@@ -49,7 +49,7 @@ The most important member to note is `task_sp`. This member points to the task s
 
 So then, what kicks off a context switch? In a cooperative scheduler, the currently running task would itself begin the process. In a preemptive scheduler, you usually need some sort of interrupt. For this project, I used a simple timer to do a context switch every one millisecond. When the timer fires, the CPU jumps into the interrupt service routine in which it performs a context switch. When we return from the interrupt, we'll find ourselves executing a different task than we were before. All it takes to set up the interrupt is the following:
 
-<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/master/scheduler.c?slice=95:109&footer=minimal"></script>
+<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/1.0.2/scheduler.c?slice=95:109&footer=minimal"></script>
 
 `SCHEDULER_TICK_MS` is a constant which defines the period of the scheduler tick in milliseconds. This is set to 1 millisecond elsewhere. In just a few lines I've configured the timer to count up to the equivalent number of clock ticks and trigger an interrupt, repeatedly.
 
@@ -57,7 +57,7 @@ So then, what kicks off a context switch? In a cooperative scheduler, the curren
 
 Now, let's take a look at the interrupt code -- the meat of the scheduler which manages our stacks:
 
-<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/master/scheduler.c?slice=111:144&footer=minimal"></script>
+<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/1.0.2/scheduler.c?slice=111:144&footer=minimal"></script>
 
 At the top I declare `task_sp`, a file-scoped variable used later as a container for the stack pointer in some inline assembly code. It's important that it not be stack-allocated, as the stack is "under construction" in this function. It has to be file-scoped because for some reason, that's the only way to make it visible to the inline assembly -- I'd love for someone to tell me why that is.
 
@@ -71,7 +71,7 @@ And that's it for under the hood!
 
 Another important consideration is the API provided to the user. In the case of an OS, the "user" is a programmer who wants to write software for the computer. My intent is to provide a strong knowledge barrier between tasks and the OS that runs them. Let's look at the functions available:
 
-<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/master/scheduler.h?slice=22:46&footer=minimal"></script>
+<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/1.0.2/scheduler.h?slice=22:46&footer=minimal"></script>
 
 You've got an initialization function, a function to add a task, and finally one to kick off the scheduler. And there's a macro to make adding tasks even simpler. Let's see what that looks like in practice.
 
@@ -79,7 +79,7 @@ You've got an initialization function, a function to add a task, and finally one
 
 Here we see three different tasks that can all be scheduled:
 
-<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/master/main.c?slice=28:49&footer=minimal"></script>
+<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/1.0.2/main.c?slice=28:49&footer=minimal"></script>
 
 They each consist of some initialization code and an infinite while loop. In this way, they are written as though they have the processor all to themselves. There is no notion of yielding to other tasks.
 
@@ -87,7 +87,7 @@ They each consist of some initialization code and an infinite while loop. In thi
 
 Here is those same tasks being scheduled:
 
-<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/master/main.c?slice=19:28&footer=minimal"></script>
+<script src="http://gist-it.appspot.com/http://github.com/rjw245/rileyOS/blob/1.0.2/main.c?slice=19:28&footer=minimal"></script>
 
 Behind the scenes, each call to the `SCHEDULER_ADD` macro statically allocates a stack of the requested size (in this case, 512 bytes each), pushes initial values onto it, and stores the stack pointer in a new task descriptor which gets queued up.
 
