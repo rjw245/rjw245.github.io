@@ -2,7 +2,7 @@
 layout:     post
 title:      Basic Preemptive Scheduler on an MSP430
 date:       2017-04-10
-summary:    I wrote a basic preemptive scheduler for the MSP430.
+summary:    Overview of schedulers & a basic implementation.
 thumbnail:  clock-o
 tags:
 - operating systems
