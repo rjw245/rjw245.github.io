@@ -13,7 +13,7 @@ tags:
 - hempstead
 ---
 
-During my last semester at Tufts, I was fortunate enough to work in Professor Mark Hempstead's computer architecture lab. I had previously taken a class with him on computer architecture and was interested in doing more work in the field, as well as gaining some research experience. I had been toying with the idea of going to graduate school the summer before and into the fall, ultimately deciding that I wanted to get some experience working in a lab before committing myself to
+During my last semester at Tufts, I was fortunate enough to work with Professor Mark Hempstead at the [Tufts Computer Architecture Lab (TCAL)](https://sites.tufts.edu/tcal/){:target="_blank"}. I had previously taken a class with him on computer architecture and was interested in doing more work in the field, as well as gaining some research experience. I had been toying with the idea of going to graduate school the summer before and into the fall, ultimately deciding that I wanted to get some experience working in a lab before committing myself to
 a Master's program, and this project was the perfect opportunity to gain that experience.
 
 Professor Hempstead's lab focuses on the future of specialized hardware accelerators and their integration into general-purpose computer architectures. My project was to develop an architecture incorporating multiple accelerators and to write an application on top which utilizes them in complex ways to solve interesting problems either faster or more efficiently than traditional architectures could. I ran out of time to finish the application, but I did validate certain
