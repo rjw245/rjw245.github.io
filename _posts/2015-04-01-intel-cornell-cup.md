@@ -13,7 +13,11 @@ tags:
 - hempstead
 ---
 
-During my junior year at Tufts, I and three friends worked on a project for the [Intel-Cornell Cup](http://www.systemseng.cornell.edu/engineering/se/intel/about/){:target="_blank"}. The idea was to improve upon a robotic gripper arm developed by Cornell and the University of Chicago. Their design uses a balloon filled with granular material and a vacuum pump to cling to objects. First the balloon is loosely pressed onto an object; then the vacuum is initiated to pull air out of the balloon, causing the material inside to become rigid. At that point, enough friction is applied to the object that the arm can pick it up. Here's a video of it in action:
+During my junior year at Tufts, I and three friends worked on a project for the [Intel-Cornell Cup](http://www.systemseng.cornell.edu/engineering/se/intel/about/){:target="_blank"}.
+
+![iccteam]({{ site.baseurl }}/assets/img/iccteam.jpg)
+
+The idea was to improve upon a robotic gripper arm developed by Cornell and the University of Chicago. Their design uses a balloon filled with granular material and a vacuum pump to cling to objects. First the balloon is loosely pressed onto an object; then the vacuum is initiated to pull air out of the balloon, causing the material inside to become rigid. At that point, enough friction is applied to the object that the arm can pick it up. Here's a video of it in action:
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/0d4f8fEysf8" frameborder="0" allowfullscreen></iframe>
 <br />
