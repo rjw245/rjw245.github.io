@@ -13,7 +13,7 @@ tags:
 - hempstead
 ---
 
-During my junior year at Tufts, I and three friends worked on a project for the [Intel-Cornell Cup](http://www.systemseng.cornell.edu/engineering/se/intel/about/){:target="_blank"}.
+During my junior year at Tufts, I and three friends worked on a project for the [Intel-Cornell Cup](https://www.systemseng.cornell.edu/engineering/se/intel/about/){:target="_blank"}.
 
 ![iccteam]({{ site.baseurl }}/assets/img/iccteam.jpg)
 
@@ -24,6 +24,6 @@ The idea was to improve upon a robotic gripper arm developed by Cornell and the 
 
 Our improvements revolved around making the arm suitable for use in space. This entailed replacing the vacuum with hydraulics and making it air-tight.
 
-We regularly posted on a Cornell-hosted blog with updates throughout the development of the project. To read more in-depth, [you can check out our posts here](http://blogs.cornell.edu/cornellcup2015tuftsroboticists/){:target="_blank"}.
+We regularly posted on a Cornell-hosted blog with updates throughout the development of the project. To read more in-depth, [you can check out our posts here](https://blogs.cornell.edu/cornellcup2015tuftsroboticists/){:target="_blank"}.
 
-With this project, [we earned third place](http://www.systemseng.cornell.edu/se/intel/news/2015awards.cfm){:target="_blank"} at the finals in Florida, which we shared with a few other teams.
+With this project, [we earned third place](https://www.systemseng.cornell.edu/se/intel/news/2015awards.cfm){:target="_blank"} at the finals in Florida, which we shared with a few other teams.

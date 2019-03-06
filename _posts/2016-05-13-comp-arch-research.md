@@ -22,5 +22,5 @@ aspects of the architecture. I showed that an FFT could be computed faster in ha
 Through this project, I learned a lot about FPGA development with the Xilinx suite of tools. I worked with a ZedBoard which integrates a general-purpose ARM processor tightly coupled to FPGA fabric. It was pretty exciting to design a system architecture and then immediately be able to write code which interacts with its components. In addition to technical skills I acquired, I also learned a lot about the architecture research field and the work being done by the research
 community. My full report from the project summarizing what I learned and accomplished is included below.
 
-<iframe src="http://docs.google.com/gview?url=http://rileywood.me/assets/pdf/independent-study-report.pdf&embedded=true" style="width:718px; height:700px;" frameborder="0"></iframe>
+<iframe src="https://docs.google.com/gview?url=https://rileywood.me/assets/pdf/independent-study-report.pdf&embedded=true" style="width:718px; height:700px;" frameborder="0"></iframe>
 

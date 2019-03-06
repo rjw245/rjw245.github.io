@@ -32,32 +32,32 @@ Compare the two scales on a keyboard, and you'll notice that the 7th note has be
 
 If you start counting intervals at the fourth note, you'll recognize the *full, full, half, full, full, full, half* step pattern.
 
-So in summary, you can move from one mode to the next by flatting the particular note which maintains the necessary interval pattern somewhere in the scale. My guitar teacher [Sam Davis](http://samdavis.com){:target="_blank"} calls this relationship "Absolutistic Modal Flatitude", hence the name of this post.
+So in summary, you can move from one mode to the next by flatting the particular note which maintains the necessary interval pattern somewhere in the scale. My guitar teacher [Sam Davis](https://samdavis.com){:target="_blank"} calls this relationship "Absolutistic Modal Flatitude", hence the name of this post.
 
 I wanted to prove to myself that I understood this concept, so I wrote a Python program that uses this algorithm to move between neighboring modes. You can find the [source code on Github](https://github.com/rjw245/absolutistic-modal-flatitude).
 
 First I define all possible notes in the scale (aka the chromatic scale) with their frequencies (so that I can play them back):
-<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=43:57&footer=minimal"></script>
+<script src="https://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=43:57&footer=minimal"></script>
 
 Then I define which of those notes make up the Ionian mode. `False` == don't play it, `True` == play it. I have a separate data structure `cur_mode` which tracks the mode we are currently interested in playing. We start with the Ionian mode.
-<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=58:78&footer=minimal"></script>
+<script src="https://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=58:78&footer=minimal"></script>
 
 Anywhere there is a `False` between two `Trues` is a full step (because we are skipping one note), and anywhere there are two adjacent `Trues` is a half step. It's important to note that there there is one fewer entry in my mode data structures than in `frequencies`; this is because a scale concludes on the "1" note of the next octave, so we should wrap around to the first index of `cur_mode` when deciding whether to play this note.
 
 I set up a while loop which will play the current mode, then tweak it to move to the next mode. First, the code which plays the scale:
 
-<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=93:99&footer=minimal"></script>
+<script src="https://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=93:99&footer=minimal"></script>
 
 It's fairly straightforward: move through cur_mode, and play a note if the mode says it should be played. You can see where I wrap around the end of `cur_mode`.
 
 Now it's time for the really cool part: transforming the current mode into a new one. We simply locate the pattern of the Ionian mode (*full-full-half-full-full-full-half*) wherever it is
 in the current mode, and flat the seventh note of that pattern.
 
-<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=99:109&footer=minimal"></script>
+<script src="https://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=99:109&footer=minimal"></script>
 
 Eventually the note we'll be flatting will be the root of the scale, the 1, in this case C5. For the purposes of this demonstration, we would like to keep the scale rooted in C. If we ever find that the root of the scale has changed, we simply rotate the mode pattern back one step so that we are once again playing C5 as the root:
 
-<script src="http://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=109:114&footer=minimal"></script>
+<script src="https://gist-it.appspot.com/https://github.com/rjw245/absolutistic-modal-flatitude/blob/master/absolutistic_modal_flatitude.py?slice=109:114&footer=minimal"></script>
 
 And that's it! If you're curious about listening to each of the modes, you can find a link to the code above. Alternatively, you can listen to the playback below:
 

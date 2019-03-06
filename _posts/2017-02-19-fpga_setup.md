@@ -20,7 +20,7 @@ I'v been itching for a side project lately, so I decided to dig out my DE2i-150 
 
 The latest version of Quartus (as of this writing) is 16.1.2 -- unfortunately, template projects for the DE2i-150 board are only supported for versions 15.1.0 and 16.0.0. So I elected to download the slightly older 16.0.0 release. No big deal.
 
-[Link to Quartus 16.0.0 Lite](http://dl.altera.com/16.0/?edition=lite){:target="_blank"}
+[Link to Quartus 16.0.0 Lite](https://dl.altera.com/16.0/?edition=lite){:target="_blank"}
 
 The download will come with a setup.sh script in the top-level directory. I recommend running the script as root so that you can install the application in `/opt`:
 ~~~

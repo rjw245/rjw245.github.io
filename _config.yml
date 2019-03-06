@@ -7,7 +7,7 @@ picture:        'assets/img/Logo.png'
 author-pic:     'assets/img/me-small.jpg'
 locale:         en_US
 timezone:       America/New_York
-url:            http://rileywood.me
+url:            https://rileywood.me
 
 # Jekyll
 permalink:      /:year/:month/:day/:title/ 
@@ -27,7 +27,7 @@ sass:
 # if you don't have any of social below, comment the line.
 email: contact@rileywood.me
 github: rjw245
-#stackoverflow: 6378818/riley-wood #123456/username   from a "http://stackoverflow.com/users/123456/username" link
+#stackoverflow: 6378818/riley-wood #123456/username   from a "https://stackoverflow.com/users/123456/username" link
 linkedin: rileywood
 #xing: username
 steam: riolio11
