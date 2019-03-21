@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/rileywood
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://rileywood.me
+  * I am rileywood (https://keybase.io/rileywood) on keybase.
+  * I have a public key ASDobyXbmiKc0wURiFmmwW103wCHF8IG7SD4h4-2KVdSsQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120e86f25db9a229cd305118859a6c16d74df008717c206ed20f8878fb6295752b10a",
+      "host": "keybase.io",
+      "kid": "0120e86f25db9a229cd305118859a6c16d74df008717c206ed20f8878fb6295752b10a",
+      "uid": "33f2f125344e575ffe8c45ba6c0f0819",
+      "username": "rileywood"
+    },
+    "merkle_root": {
+      "ctime": 1553138038,
+      "hash": "031d59aec52408984cb402052a3d17546e592ec226b4a7331878c2e36d27844dd7176c355c17645f4e7b883012fa89c6a6bea95b46ac1448a08692a334693703",
+      "hash_meta": "c79f5b9d22446805399ec38869051aa6add3aa8c3d738ac2d6a875a00b1ceb71",
+      "seqno": 4993195
+    },
+    "service": {
+      "entropy": "78ZBs8Jche2BMvrj0QBwTAKU",
+      "hostname": "rileywood.me",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "3.1.2"
+  },
+  "ctime": 1553138054,
+  "expire_in": 504576000,
+  "prev": "20379a0c616257964f1b967f7025425608a70b14934de67235f1254714670666",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg6G8l25oinNMFEYhZpsFtdN8AhxfCBu0g+IePtilXUrEKp3BheWxvYWTESpcCBcQgIDeaDGFiV5ZPG5Z/cCVCVginCxSTTeZyNfElRxRnBmbEIERXU8N5xzROIBHtDyabkLsso/Y+xa7BJFLA/rkp6eQRAgHCo3NpZ8RA0hIOjsMu1i5QIF3W2BW2acdsssO6/nwbLKczBZk0BxpdpxRVEhfYKZA/qGYvi6AWGcDGKfMauM1HlxTptEP/AKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPtvxKYbbD+Xk/o0xxGB2g9bCwe5xVgxGkWklh8p5MZJo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/rileywood
+
+==================================================================
