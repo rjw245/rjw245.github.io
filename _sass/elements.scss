@@ -76,14 +76,20 @@ table {
 	width: 100%;
 }
 td {
-	line-height: 2.5em;
-	padding: 0.4em;
+	// line-height: 2.5em;
+	padding: 0.8em;
 	border-top: 1px solid $color_1;
+	border-left: 1px dashed lightgray;
+	background-color: white;
 }
+td:first-child {
+	border-left: none;
+   }
 th {
 	background-color: $color_1;
-	line-height: 2.5em;
-	padding: 0.4em;
+	// line-height: 2.5em;
+	padding: 0.8em;
+	// text-align: center;
 	color: $color_2;
 }
 .image-pull-right {

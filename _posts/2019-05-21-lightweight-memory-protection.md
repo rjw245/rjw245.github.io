@@ -198,8 +198,6 @@ A trick is played to give the process ownership of the code and data loaded from
 
 Given the design described, MPU regions are configured as in Table 1. Region 0 (lowest priority) is configured to span the entire memory space and its policy for unprivileged code depends on the task being run. This is because the MPU must be more permissive for tasks compiled with the OS. All such tasks will have no parent process since they are started from the OS main function. Such tasks must be able to access code in flash that is mixed with the OS image -- to simplify things, OS tasks are allowed to access the entire memory map, except for heap subregions allocated to the OS. For OS tasks, region 0 is configured as fully permissive. For process tasks, access to region 0 is denied.
 
-Regions 4 through 7 are configured as consecutive regions together spanning the heap, and their policy for unprivileged code also depends on the current task. An access to a disabled subregion of the heap will instead be evaluated by region 0, which must enforce the desired policy. For process tasks, region 0 will be unpermissive. Therefore, region 4-7 must be R/W permissive to unprivileged code and accessible subregions will be enabled. For OS tasks, the opposite is true: region 4-7 will be configured as unpermissive and accessible subregions will be disabled. In summary, the permissiveness for unprivileged code of region 0 and regions 4-7 are always complementary, and depend on if the task belongs to a process or not.
-
 | # | Base Addr | Size | Unprivileged Access | Privileged Access | Notes                                                        |
 |---|--------------|------|---------------------|-------------------|--------------------------------------------------------------|
 | 0 | 0x00000000   | 4GB  | Varies[^2]          | R/W               | Spans address space. Applies to disabled subregions of heap. |
@@ -216,6 +214,7 @@ Regions 4 through 7 are configured as consecutive regions together spanning the 
 [^2]: None if current task belongs to a loaded process. R/W if task compiled with OS.
 [^3]: R/W if current task belongs to a loaded process. None if task compiled with OS.
 
+Regions 4 through 7 are configured as consecutive regions together spanning the heap, and their policy for unprivileged code also depends on the current task. An access to a disabled subregion of the heap will instead be evaluated by region 0, which must enforce the desired policy. For process tasks, region 0 will be unpermissive. Therefore, region 4-7 must be R/W permissive to unprivileged code and accessible subregions will be enabled. For OS tasks, the opposite is true: region 4-7 will be configured as unpermissive and accessible subregions will be disabled. In summary, the permissiveness for unprivileged code of region 0 and regions 4-7 are always complementary, and depend on if the task belongs to a process or not.
 
 # Evaluation
 
