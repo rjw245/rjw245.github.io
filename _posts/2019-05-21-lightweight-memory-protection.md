@@ -74,15 +74,15 @@ A naive solution would be to statically partition the heap into equal-size piece
 
 <figure class="full">
     <img src="/assets/img/mpu/heap_prot.png">
-    <figcaption>Figure 1. Illustration of how the heap is organized in memory. Four consecutive MPU regions are configured to span the heap, each with eight subregions. Memory allocated to different tasks will always be placed in different subregions such that each subregion's blocks are associated with at most one task. Allocated blocks are shown, color-coded according to which task requested them.</figcaption>
+    <figcaption><a name="fig1">Figure 1.</a> Illustration of how the heap is organized in memory. Four consecutive MPU regions are configured to span the heap, each with eight subregions. Memory allocated to different tasks will always be placed in different subregions such that each subregion's blocks are associated with at most one task. Allocated blocks are shown, color-coded according to which task requested them.</figcaption>
 </figure>
 <!-- https://www.draw.io/#G1K-jvmSFl7cc_w53rWbj7vP-SnMSNnW15 -->
 
-Figure 1 shows an example heap where three tasks have each been allocated memory. Each subregion will contain memory for at most one task. It's possible for a task's memory to span multiple subregions, as in subregions 1 and 2. This design is susceptible to some amount of internal and external fragmentation, though less than the naive solution I described earlier. You can see internal fragmentation at the end of subregion 0. Only small allocations can fit in the remaining free space of subregion 0, and they must be allocated to Task A to be put there in the first place (since Task A has claimed that subregion). As for external fragmentation, suppose Task C were to request 256 Bytes from the heap manager -- this is larger than one subregion. For that reason, the allocation *could not* fit in the empty subregion 5. It would instead be placed in subregions 7 and 8, leaving subregion 5 to go to waste until a small enough block could be allocated there.
+[Figure 1](#fig1) shows an example heap where three tasks have each been allocated memory. Each subregion will contain memory for at most one task. It's possible for a task's memory to span multiple subregions, as in subregions 1 and 2. This design is susceptible to some amount of internal and external fragmentation, though less than the naive solution I described earlier. You can see internal fragmentation at the end of subregion 0. Only small allocations can fit in the remaining free space of subregion 0, and they must be allocated to Task A to be put there in the first place (since Task A has claimed that subregion). As for external fragmentation, suppose Task C were to request 256 Bytes from the heap manager -- this is larger than one subregion. For that reason, the allocation *could not* fit in the empty subregion 5. It would instead be placed in subregions 7 and 8, leaving subregion 5 to go to waste until a small enough block could be allocated there.
 
 <figure class="full">
     <img src="/assets/img/mpu/heap_over_time.png">
-    <figcaption>Figure 2. Visibility of heap subregions to the OS and each task. Tasks are only able to access subregions where memory allocated to them resides. The rest is off-limits.</figcaption>
+    <figcaption><a name="fig2">Figure 2.</a> Visibility of heap subregions to the OS and each task. Tasks are only able to access subregions where memory allocated to them resides. The rest is off-limits.</figcaption>
 </figure>
 <!-- https://www.draw.io/#G1K-jvmSFl7cc_w53rWbj7vP-SnMSNnW15 -->
 
@@ -99,22 +99,22 @@ Here we will discuss the net effect of fragmentation and ways of addressing it.
 
 The design exhibits internal fragmentation when a task requests more memory than can fit in the remaining free space in a subregion it already owns. The heap manager will go allocate another subregion to the task, or worse, will fail to allocate memory, leaving the hole in the first subregion to go to waste.
 
-This is particularly noticeable in systems that spawn many threads. The OS itself is allocated memory on the heap as needed for TCBs. This memory is protected just like any other heap memory, which means the OS is allocated MPU subregions. Immediately after allocating space for the TCB, space is allocated for the task stack. This means that the OS's MPU subregion will be followed by a task's MPU subregion, since the heap manager allocates subregions sequentially. This means that as the OS fills up its subregion, it is likely to experience internal fragmentation. See Figure 3 for an illustration of the problem.
+This is particularly noticeable in systems that spawn many threads. The OS itself is allocated memory on the heap as needed for TCBs. This memory is protected just like any other heap memory, which means the OS is allocated MPU subregions. Immediately after allocating space for the TCB, space is allocated for the task stack. This means that the OS's MPU subregion will be followed by a task's MPU subregion, since the heap manager allocates subregions sequentially. This means that as the OS fills up its subregion, it is likely to experience internal fragmentation. See [Figure 3](#fig3) for an illustration of the problem.
 
 <figure class="full">
     <img src="/assets/img/mpu/OS_int_frag.png">
-    <figcaption>Figure 3. Internal fragmentation as experienced by the OS during TCB allocation. OS subregions are not consecutive, meaning that internal fragmentation can occur in many places.</figcaption>
+    <figcaption><a name="fig3">Figure 3.</a> Internal fragmentation as experienced by the OS during TCB allocation. OS subregions are not consecutive, meaning that internal fragmentation can occur in many places.</figcaption>
 </figure>
 
 This can be solved by pre-allocating a pool of TCBs for the OS to pull from at initialization. By allocating all TCBs at once, the programmer will force all OS subregions to be adjacent. This will reduce internal fragmentation since allocated blocks are allowed to span the boundaries between adjacent subregions as long as both belong to the same entity. This requires knowledge of the target application and how many tasks it will require.
 
 ## External Fragmentation
 
-The design exhibits external fragmentation when a task requests more memory than can fit in the free space made up of one or more *free* MPU subregions. This will occur when tasks free all of the memory they own in a given subregion, and the subregion becomes free while its neighboring subregions are still occupied. See Figure 4 for an illustration of the problem.
+The design exhibits external fragmentation when a task requests more memory than can fit in the free space made up of one or more *free* MPU subregions. This will occur when tasks free all of the memory they own in a given subregion, and the subregion becomes free while its neighboring subregions are still occupied. See [Figure 4](#fig4) for an illustration of the problem.
 
 <figure class="full">
     <img src="/assets/img/mpu/ext_frag.png">
-    <figcaption>Figure 4. External fragmentation. Though the total amount of free space is larger than the requested block, it cannot fit since there is no <i>contiguous</i> region of free space large enough.</figcaption>
+    <figcaption><a name="fig4">Figure 4.</a> External fragmentation. Though the total amount of free space is larger than the requested block, it cannot fit since there is no <i>contiguous</i> region of free space large enough.</figcaption>
 </figure>
 
 ## Process Loading
@@ -123,7 +123,7 @@ When a process is loaded from disk, the OS stores its code and data on the heap 
 
 ## Changes to TCB, PCB, and Context Switch
 
-The TCB and PCB are expanded to include a struct of type `heap_owner_t` used by the heap manager to manage MPU subregions. The TCB now also contains a pointer to the base of its stack, which used to free the task stack upon killing the task. These changes are italicized in Listings 1 and 2. The contents of the `heap_owner_t` struct are shown in Listing 3.
+The TCB and PCB are expanded to include a struct of type `heap_owner_t` used by the heap manager to manage MPU subregions. The TCB now also contains a pointer to the base of its stack, which used to free the task stack upon killing the task. These changes are italicized in Listings [1](#lst1) and [2](#lst2). The contents of the `heap_owner_t` struct are shown in [Listing 3](#lst3).
 
 ```c
 typedef struct _pcb_s
@@ -135,7 +135,7 @@ typedef struct _pcb_s
 } pcb_t;
 ```
 
-**Listing 1.** The process control block (PCB) struct, with additions annotated.
+<a name="lst1">**Listing 1.**</a> The process control block (PCB) struct, with additions annotated.
 
 ```c
 typedef struct _tcb_s
@@ -155,7 +155,7 @@ typedef struct _tcb_s
 } tcb_t;
 ```
 
-**Listing 2.** The thread control block (TCB) struct, with additions annotated.
+<a name="lst2">**Listing 2.**</a> The thread control block (TCB) struct, with additions annotated.
 
 ```c
 typedef struct _heap_owner_s
@@ -165,11 +165,11 @@ typedef struct _heap_owner_s
 } heap_owner_t;
 ```
 
-**Listing 3.** The heap_owner_t struct.
+<a name="lst3">**Listing 3.**</a> The heap_owner_t struct.
 
 The `heap_owner_t` struct is a handle used by the heap manager to identify tasks and processes in the system whose memory ought to be mutually isolated. The `id` field uniquely identifies the memory's owner, whether that be a task or a process. The heap manager will allow blocks with the same owner ID to be grouped together in the same subregion; blocks with different owner IDs must be placed in different subregions. The `heap_prot_msk` field is a mask indicating which heap subregions this task or process has memory in and therefore ought to be allowed to access.
 
-During a context switch, the OS configures the MPU to allow access only to heap subregions associated with the next running task. This is indicated by the `heap_prot_msk` field in the `heap_owner_t` struct of the TCB *and* parent PCB (if applicable) associated with the next task. All other subregions (either associated with other tasks or unused) are protected. The pseudo-code in Listing 4 illustrates this procedure.
+During a context switch, the OS configures the MPU to allow access only to heap subregions associated with the next running task. This is indicated by the `heap_prot_msk` field in the `heap_owner_t` struct of the TCB *and* parent PCB (if applicable) associated with the next task. All other subregions (either associated with other tasks or unused) are protected. The pseudo-code in [Listing 4](#lst4) illustrates this procedure.
 
 ```c
 u32 accessible_subregions = tcb->h_o.heap_prot_msk;
@@ -182,7 +182,7 @@ if(tcb->parent_process)
 MPU_ConfigureSubregions(accessible_subregions);
 ```
 
-**Listing 4.** Pseudo-code demonstrating how subregions are made accessible based on the TCB *and* PCB.
+<a name="lst4">**Listing 4.**</a> Pseudo-code demonstrating how subregions are made accessible based on the TCB *and* PCB.
 
 The MPU regions themselves do not need to be reprogrammed at each context switch. These are programmed once at initialization. Only the subregion masks for each region need to be reprogrammed during the context switch. This keeps the context switch fairly light.
 
@@ -222,12 +222,12 @@ Regions 4 through 7 are configured as consecutive regions together spanning the 
 
 <figure class="full">
     <img src="/assets/img/mpu/task_access.png">
-    <figcaption>Figure 5. Illustration of which tasks have access to which MPU subregions of the heap. This shows twenty-nine tasks, the maximum my solution can support with a 16KB heap.</figcaption>
+    <figcaption><a name="fig5">Figure 5.</a> Illustration of which tasks have access to which MPU subregions of the heap. This shows twenty-nine tasks, the maximum my solution can support with a 16KB heap.</figcaption>
 </figure>
 
-Figure 5 shows which MPU subregions of the heap are accessible to which task for a system running twenty-nine tasks. Each task is allocated a unique subregion of its own, where its stack is located. Certain subregions (marked in gray) are owned by the OS (for storing TCBs) and are not accessible to any task.
+[Figure 5](#fig5) shows which MPU subregions of the heap are accessible to which task for a system running twenty-nine tasks. Each task is allocated a unique subregion of its own, where its stack is located. Certain subregions (marked in gray) are owned by the OS (for storing TCBs) and are not accessible to any task.
 
-In a simpler system, I can verify that accessing another task's stack generates a memory management fault. I spawn two OS tasks that both have access to a global integer pointer. Task A points the pointer to a local variable in its stack. Task B waits until Task A has done this and then tries to dereference the pointer to A's stack. Listing 5 shows the tasks for this test program.
+In a simpler system, I can verify that accessing another task's stack generates a memory management fault. I spawn two OS tasks that both have access to a global integer pointer. Task A points the pointer to a local variable in its stack. Task B waits until Task A has done this and then tries to dereference the pointer to A's stack. [Listing 5](#lst5) shows the tasks for this test program.
 
 ```c
 Sema4Type sema;
@@ -246,7 +246,7 @@ void TaskB(void) {
 }
 ```
 
-**Listing 5.** Stack protection test program.
+<a name="lst5">**Listing 5.**</a> Stack protection test program.
 
 Indeed, upon running this program, one will see that a memory management fault is triggered immediately after dereferencing the pointer to Task A's stack. My design is successful at protecting a task's stack.
 
@@ -270,9 +270,9 @@ void TaskB(void) {
 }
 ```
 
-**Listing 6.** Heap protection test program (Read/Write).
+<a name="lst6">**Listing 6.**</a> Heap protection test program (Read/Write).
 
-We can modify Listing 4 slightly to test heap protection as shown in Listing 5. Rather than point `task_a_heap` at a stack variable, I assign it to the return value of Heap_Malloc. Once again, Task B encounters a memory management fault upon dereferencing the pointer.
+We can modify [Listing 5](#lst5) slightly to test heap protection as shown in [Listing 6](#lst6). Rather than point `task_a_heap` at a stack variable, I assign it to the return value of Heap_Malloc. Once again, Task B encounters a memory management fault upon dereferencing the pointer.
 
 ### Freeing Another Task's Heap Memory
 
@@ -292,9 +292,9 @@ void TaskB(void) {
 }
 ```
 
-**Listing 7.** Heap protection test program (Free).
+<a name="lst7">**Listing 7.**</a> Heap protection test program (Free).
 
-With more small modifications, we can make sure that freeing another task's memory is similarly not allowed (Listing 7). Rather than dereference the pointer to Task A's heap memory, Task B passes it to Heap_Free. Once again, this test succeeds and the access is denied by exception.
+With more small modifications, we can make sure that freeing another task's memory is similarly not allowed ([Listing 7](#lst7)). Rather than dereference the pointer to Task A's heap memory, Task B passes it to Heap_Free. Once again, this test succeeds and the access is denied by exception.
 
 ## Demonstrating Heap Flexibility
 
