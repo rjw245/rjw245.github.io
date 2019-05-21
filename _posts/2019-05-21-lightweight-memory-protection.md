@@ -11,6 +11,8 @@ tags:
 - ARM
 ---
 
+For my real-time operating systems course at UT Austin, I decided to explore memory protection on an embedded system. I was interested in understanding memory protection hardware ever since working on my homegrown OS project. In this project, I went a step further and aimed to implement memory protection while *minimizing* context switch overhead. Below is a writeup of the project -- I hope you find it interesting!
+
 # Table of Contents
 {:.no_toc}
 
@@ -44,19 +46,19 @@ Some time penalty in the context switch when using the MPU is unavoidable. But, 
 
 ## Requirements
 
-For this project, I will guarantee mutual isolation and protection of tasks' stack and heap memory. Stack-allocated variables in one task shall not be readable nor writable by any other task. Similarly, memory allocated to a task on the heap will not be readable nor writable by any other task. My design will also aim to add minimal overhead to the OS. The MPU hardware should not be massively reconfigured at every context switch.
+The goal of this project is to guarantee mutual isolation and protection of tasks' stack memory, heap memory, and process code and data. Stack-allocated variables in one task shall not be readable nor writable by any other task. Similarly, memory allocated to a task on the heap will not be readable nor writable by any other task. My design will also aim to add minimal overhead to the OS. The MPU hardware should not be massively reconfigured at every context switch.
 
-This implementation supports loading processes from disk into RAM (introduced in lab 5 of EE380L). Code and data of a loaded process will belong to the process control block and will be accessible to all child tasks. However, the stacks of each task in the process will remain inaccessible to one another. Also, any heap memory allocated to a process task will be accessible only to it -- not to any other task in the system.
+This implementation supports loading processes from disk into RAM. Code and data of a loaded process will belong to the process control block and will be accessible to all child tasks. However, the stacks of each task in the process will remain inaccessible to one another. Also, any heap memory allocated to a process task will be accessible only to it -- not to any other task in the system.
 
 Importantly, this implementation does not protect task code if the task is compiled with the OS (i.e. not loaded as a process from disk). Tasks compiled into the OS executable are able to execute any functions that they can be linked against.
 
 Task memory will be protected automatically upon task creation and heap allocation.
 
-As a proof of concept, my implementation can protect memory of up to twenty-nine different tasks. It cannot scale indefinitely. This is in part due to limitations of the MPU, which imposes a limit on the number of regions that can be individually configured. In a system that must support more tasks, the implementation could be changed to make protecting task memory optional, so that while only so many can be protected, more than that may run in the system at any given time.
+As a proof of concept, my implementation can protect memory of up to twenty-nine different tasks. It cannot scale indefinitely. This is in part due to limitations of the MPU, which imposes a limit on the number of regions that can be individually configured at one time. In a system that must support more tasks, the implementation could be changed to make protecting task memory optional, so that while only so many can be protected, more than that may run in the system.
 
 ## Target Platform
 
-My solution is implemented on an ARM Cortex-M4F-based microcontroller: the TM4C123GH6PM. It runs at 80MHz and contains 32KB of RAM. This is the board used throughout our EE380L course. I will be implementing my solution within the OS my partner and I built for this course. The OS contains a priority-based scheduler, supports synchronization primitives such as semaphores, and provides a simpler command prompt over the UART interface to interact with the system. Tasks are run as unprivileged code and must use the SVC call interface to execute system calls. Importantly, the OS does not provide any virtualization of memory since there is no Memory Management Unit (MMU) present in the system. The system does, however, provide a Memory Protection Unit (MPU) which can be used to protect memory despite the lack of virtualization.
+My solution is implemented on an ARM Cortex-M4F-based microcontroller: the TM4C123GH6PM. It runs at 80MHz and contains 32KB of RAM. I will be implementing my solution within the OS built for my real-time operating systems course at UT Austin. The OS contains a priority-based scheduler, supports synchronization primitives such as semaphores, and provides a simpler command prompt over the UART interface to interact with the system. Tasks are run as unprivileged code and must use the SVC call interface to execute system calls. Importantly, the OS does not provide any virtualization of memory since there is no Memory Management Unit (MMU) present in the system. The system does, however, provide a Memory Protection Unit (MPU) which can be used to protect memory despite the lack of virtualization.
 
 ## MPU Functionality
 
@@ -66,7 +68,7 @@ The MPU implements relative priority between regions. Regions are indexed 0 to 7
 
 ## Heap Protection
 
-The heap is implemented as a simple Knuth heap, based upon the implementation from lab 5, with some changes to accomodate the MPU. Any memory allocated to a task on the heap is guaranteed to be isolated from other tasks. This is achieved by grouping memory allocations together into MPU subregions by the owner task. When tasks are allocated memory, the heap manager associates the task with all MPU subregions touched by the allocated block. The task now "owns" those subregions, and no other task will be allocated memory in those subregions. In this way, the heap manager guarantees that every subregion will contain blocks belonging to at most one task. When the last allocated block in a given subregion is freed, the owner task relinquishes ownership of the subregion, and the heap manager is free to allocate memory in that subregion to another task. At this point, protecting the heap is as simple as prohibiting access to heap subregions that the running task doesn't "own".
+The heap is implemented as a simple Knuth heap with some changes to accomodate the MPU. Any memory allocated to a task on the heap is guaranteed to be isolated from other tasks. This is achieved by grouping memory allocations together into MPU subregions by the owner task. When tasks are allocated memory, the heap manager associates the task with all MPU subregions touched by the allocated block. The task now "owns" those subregions, and no other task will be allocated memory in those subregions. In this way, the heap manager guarantees that every subregion will contain blocks belonging to at most one task. When the last allocated block in a given subregion is freed, the owner task relinquishes ownership of the subregion, and the heap manager is free to allocate memory in that subregion to another task. At this point, protecting the heap is as simple as prohibiting access to heap subregions that the running task doesn't "own".
 
 A naive solution would be to statically partition the heap into equal-size pieces and allocate one to each task in the system. However, the approach I have chosen ought to scale better to systems where tasks may vary in their demand for heap memory. For example, if only half of all tasks use the heap, then any blocks statically allocated to the other tasks would go unused -- a huge waste. In the case where the number of tasks in the system is maximized and all demand heap memory, my solution will allocate each a subregion and converge to the simpler approach.
 
@@ -332,6 +334,9 @@ Most operating systems must support some form of inter-process communication. Cu
 
 I had considered supporting dynamic linking: a process by which the OS replaces placeholder function calls in the loaded process with the actual address of the function. After introducing protection of OS memory, this becomes slightly harder to support, but certainly possible. It just becomes necessary to isolate all OS library code into a separate region of RAM which is configured as accessible to unprivileged code, including process tasks, in the MPU. This was deemed out of scope for this project but could easily be implemented on top of my design.
 
+# Acknowledgments
+
+The OS used for this project was built by me and my lab partner, Jeageun Jung, for our real-time OS course at UT Austin. Thank you Jeageun!
 
 # Links
 
