@@ -196,7 +196,7 @@ A trick is played to give the process ownership of the code and data loaded from
 
 ## Final MPU Region Configuration
 
-Given the design described, MPU regions are configured as in Table 1. Region 0 (lowest priority) is configured to span the entire memory space and its policy for unprivileged code depends on the task being run. This is because the MPU must be more permissive for tasks compiled with the OS. All such tasks will have no parent process since they are started from the OS main function. Such tasks must be able to access code in flash that is mixed with the OS image -- to simplify things, OS tasks are allowed to access the entire memory map, except for heap subregions allocated to the OS. For OS tasks, region 0 is configured as fully permissive. For process tasks, access to region 0 is denied.
+Given the design described, MPU regions are configured as in [Table 1](#table1). Region 0 (lowest priority) is configured to span the entire memory space and its policy for unprivileged code depends on the task being run. This is because the MPU must be more permissive for tasks compiled with the OS. All such tasks will have no parent process since they are started from the OS main function. Such tasks must be able to access code in flash that is mixed with the OS image -- to simplify things, OS tasks are allowed to access the entire memory map, except for heap subregions allocated to the OS. For OS tasks, region 0 is configured as fully permissive. For process tasks, access to region 0 is denied.
 
 | # | Base Addr | Size | Unprivileged Access | Privileged Access | Notes                                                        |
 |---|--------------|------|---------------------|-------------------|--------------------------------------------------------------|
@@ -209,7 +209,7 @@ Given the design described, MPU regions are configured as in Table 1. Region 0 (
 | 6 | &Heap+8KB    | 4KB  | Varies[^3]          | R/W               | Heap region 2                                                |
 | 7 | &Heap+12KB   | 4KB  | Varies[^3]          | R/W               | Heap region 3                                                |
 
-**Table 1.** MPU Region Configutation. Some aspects of the configuration may change at runtime depending on the current task. See footnotes for more information.
+<a name="table1">**Table 1.**</a> MPU Region Configutation. Some aspects of the configuration may change at runtime depending on the current task. See footnotes for more information.
 
 [^2]: None if current task belongs to a loaded process. R/W if task compiled with OS.
 [^3]: R/W if current task belongs to a loaded process. None if task compiled with OS.
@@ -308,9 +308,9 @@ Previously, I showed that my solution supports up to twenty-nine tasks if each l
 | Memory Protection with Heavy Reconfiguration | 7.167 microseconds  |
 | Memory Protection with Lite Reconfiguration  | 6.250 microseconds  |
 
-**Table 2.** Context switch duration.
+<a name="table2">**Table 2.**</a> Context switch duration.
 
-In Table 2, I measure the context switch duration for no memory protection, memory protection with heavy reconfiguration, and my design: memory protection with lite reconfiguration. The implementation with heavy reconfiguration fully initializes each of the four MPU regions of the heap during each context switch. This approximates a solution in which each task and/or process in the system maintains its own set of MPU regions which must be programmed into the MPU prior to running. This is much ``heavier'' reconfiguration than merely masking subregions of a constant region configuration as in my solution. The addition of memory protection does lengthen the context switch duration. That said, the context switch is shorter than it would otherwise be thanks to the use of subregions, which enable relatively light reconfiguration of the MPU during a context switch compared to heavier approaches. Lite reconfiguration yields a reduction in context switch duration of 12.8%.
+In [Table 2](#table2), I measure the context switch duration for no memory protection, memory protection with heavy reconfiguration, and my design: memory protection with lite reconfiguration. The implementation with heavy reconfiguration fully initializes each of the four MPU regions of the heap during each context switch. This approximates a solution in which each task and/or process in the system maintains its own set of MPU regions which must be programmed into the MPU prior to running. This is much ``heavier'' reconfiguration than merely masking subregions of a constant region configuration as in my solution. The addition of memory protection does lengthen the context switch duration. That said, the context switch is shorter than it would otherwise be thanks to the use of subregions, which enable relatively light reconfiguration of the MPU during a context switch compared to heavier approaches. Lite reconfiguration yields a reduction in context switch duration of 12.8%.
 
 
 # Conclusion
