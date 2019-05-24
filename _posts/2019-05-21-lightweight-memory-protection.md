@@ -327,7 +327,7 @@ As mentioned previously, my solution limits the number of tasks in the system to
 
 ### Supporting Shared Memory
 
-Most operating systems must support some form of inter-process communication. Currently, two processes loaded from disk have no way to communicate with one another. One potential solution is to provide an API to the heap to allocate memory into a new subregion or subregions which will be accessible by two or more processes. Each process would specify the shared memory by an agreed upon key, say a string, in order to be granted access to it. The API would respond with a pointer to the start of the region which the processes can now use to communicate. The heap's subregion table would need to be modified to support mapping multiple \texttt{heap\_owner\_t} structs to each subregion.
+Most operating systems must support some form of inter-process communication. Currently, two processes loaded from disk have no way to communicate with one another. One potential solution is to provide an API to the heap to allocate memory into a new subregion or subregions which will be accessible by two or more processes. Each process would specify the shared memory by an agreed upon key, say a string, in order to be granted access to it. The API would respond with a pointer to the start of the region which the processes can now use to communicate. The heap's subregion table would need to be modified to support mapping multiple `heap_owner_t` structs to each subregion.
 
 ### Supporting Dynamic Linking
 
