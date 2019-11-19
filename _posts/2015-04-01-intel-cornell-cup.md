@@ -3,7 +3,7 @@ layout:     post
 title:      Universal Gripper Arm
 date:       2015-04-01
 summary:    A project I worked on in the Tufts Robotics Club
-thumbnail:  hand-lizard-o
+thumbnail:  fas fa-hand-lizard
 tags:
 - project
 - independent study

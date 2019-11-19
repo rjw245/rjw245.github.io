@@ -3,7 +3,7 @@ layout:     post
 title:      Lightweight Memory Protection on an ARM Microcontroller
 date:       2019-05-21
 summary:    Design and implementation of memory protection in an embedded system.
-thumbnail:  lock
+thumbnail:  fas fa-lock
 tags:
 - mpu
 - memory protection

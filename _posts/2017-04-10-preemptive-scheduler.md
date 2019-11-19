@@ -3,7 +3,7 @@ layout:     post
 title:      Basic Preemptive Scheduler on an MSP430
 date:       2017-04-10
 summary:    Overview of schedulers & a basic implementation.
-thumbnail:  clock-o
+thumbnail:  fas fa-clock
 tags:
 - operating systems
 - msp430

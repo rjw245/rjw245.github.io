@@ -3,7 +3,7 @@ layout:     post
 title:      Getting Started with the DE2i-150 FPGA/Intel Atom Board on Linux
 date:       2017-02-19
 summary:    Setting up Altera Quartus on Linux with the DE2i-150, an awesome dev board combining an Altera FPGA and an Intel Atom CPU.
-thumbnail:  terminal
+thumbnail:  fas fa-terminal
 tags:
 - altera
 - fpga

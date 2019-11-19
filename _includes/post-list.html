@@ -6,7 +6,7 @@
                     <div class="alignment-boxes">
                         <div class="post-title">
                             {% if post.thumbnail %}
-                                <i class="fa fa-fw fa-{{ post.thumbnail }}"></i>
+                                <i class="{{ post.thumbnail }}"></i>
                             {% endif %}
                             {{ post.title }}
                         </div>

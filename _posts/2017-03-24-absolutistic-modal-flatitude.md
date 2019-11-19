@@ -3,7 +3,7 @@ layout:     post
 title:      Absolutistic Modal Flatitude!
 date:       2017-03-25
 summary:    Using Python to illustrate modes of a musical scale.
-thumbnail:  music
+thumbnail:  fas fa-music
 tags:
 - guitar
 - music theory

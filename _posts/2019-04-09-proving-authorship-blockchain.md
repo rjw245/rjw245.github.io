@@ -3,7 +3,7 @@ layout:     post
 title:      Proving Authorship with Blockchain
 date:       2019-04-09
 summary:    Using blockchain technology to prove authorship of a document (like a blog post!)
-thumbnail:  bitcoin
+thumbnail:  fab fa-bitcoin
 tags:
 - blockchain
 - bitcoin

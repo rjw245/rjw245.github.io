@@ -3,7 +3,7 @@ layout:     post
 title:      Testbed for Computer Architecture Research
 date:       2016-05-13
 summary:    An independent project in computer architecture completed during my last semester at Tufts.
-thumbnail:  microchip
+thumbnail:  fas fa-microchip
 tags:
 - project
 - independent study
